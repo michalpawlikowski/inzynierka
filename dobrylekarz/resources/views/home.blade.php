@@ -2,9 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <a href={{ route('add') }}> <button type="button" class="btn btn-success">Dodaj nowy profil</button> </a>
+    @php
+   foreach ($specializations as $nazwa)
+            {
+            echo "<br>";
+            echo ($nazwa->nazwa);
+            }
+ @endphp
 
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+          
             <div class="card">
                 <div class="card-header">{{ __('Proil 1') }} 
                     <button type="button" class="btn btn-outline-success">Edytuj</button>

@@ -51,7 +51,7 @@
                                 </li>
                             @endif
                         @else
-                        <button type="button" class="btn btn-success">Dodaj nowy profil</button> 
+                     
                             <li class="nav-item dropdown">
                                  
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -59,6 +59,12 @@
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    <a href={{ route('home') }} class="dropdown-item" >
+                                        {{ __('Moje profile') }}
+                                    </a>
+
+                                   
 
                                     <a class="dropdown-item" href="{{'settings' }}"
                                        onclick="event.preventDefault();
