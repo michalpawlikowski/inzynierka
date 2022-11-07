@@ -25,8 +25,6 @@ class HomeController extends Controller
     {
         $namespecializations = DB::table('specializations')->get();
         
-        
-        
         return view('home', ['specializations' => $namespecializations]);
         
     }
