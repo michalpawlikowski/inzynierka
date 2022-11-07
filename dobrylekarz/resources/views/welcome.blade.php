@@ -24,11 +24,20 @@
 
                     Specjalizacja:
 
-                    <select class="js-example-basic-single" name="state">
+                    <select class="js-example-basic-single" name="specjalizacja">
 
                         <option value="AL">Dentysta</option>
-                        <option value="WY">Kardiolog</option>
-                        <option value="WY">Psycholog</option>
+
+                        @php
+                        foreach ($specjalizacje as $specjalizacje)
+                                 {
+                                 
+                                 echo "<br>  <option value='".$specjalizacje->nazwa."'>".($specjalizacje->nazwa)."</option>";
+                                 
+                                 }
+                      @endphp
+
+
                     </select>
                     <br>
                     Miasto:
@@ -36,8 +45,18 @@
                     <select class="js-example-basic-single" name="miasto">
 
                         <option value="AL">Limanowa</option>
-                        <option value="WY">Przyszowa</option>
-                        <option value="WY">Nowy Sącz</option>
+
+                        @php
+                        foreach ($miasta as $miasta)
+                                 {
+                                 
+                                 echo "<br>  <option value='".$miasta->nazwa."'>".($miasta->nazwa)."</option>";
+                                 
+                                 }
+                                 
+                      @endphp
+
+
                     </select>
                     <br>
                     <button type="submit" class="btn btn-primary">

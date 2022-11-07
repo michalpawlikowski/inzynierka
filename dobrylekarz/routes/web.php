@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $miasta = DB::table('miasta')->get();
+    $specjalizacje = DB::table('specializations')->get();
+    return view('welcome', ['miasta' => $miasta], ['specjalizacje' => $specjalizacje]);
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/add', [App\Http\Controllers\AddController::class, 'index'])->name('add');
-
+Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');

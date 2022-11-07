@@ -66,9 +66,7 @@
 
                                    
 
-                                    <a class="dropdown-item" href="{{'settings' }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('').submit();">
+                                    <a href={{ route('settings') }} class="dropdown-item" >
                                         {{ __('Ustawienia konta') }}
                                     </a>
 

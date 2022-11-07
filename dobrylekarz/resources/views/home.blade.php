@@ -3,13 +3,7 @@
 @section('content')
 <div class="container">
     <a href={{ route('add') }}> <button type="button" class="btn btn-success">Dodaj nowy profil</button> </a>
-    @php
-   foreach ($specializations as $nazwa)
-            {
-            echo "<br>";
-            echo ($nazwa->nazwa);
-            }
- @endphp
+
 
     <div class="row justify-content-center">
 

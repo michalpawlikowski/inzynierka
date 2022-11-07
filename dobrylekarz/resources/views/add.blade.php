@@ -7,10 +7,55 @@
 
         <div class="col-md-8">
           
-            Dodawanie nowego profilu
+            
+            <div class="card">
+                <div class="card-header">Dodawanie nowego profilu</div>
+                <div class="card-body">
+
+                <form action="" method="POST">
+                    Specjalizacja: 
+                    <select class="js-example-basic-single" name="specjalizacja">
+                        @php
+                        foreach ($specjalizacje as $specjalizacje)
+                                 {
+                                 
+                                 echo "<br>  <option value='".$specjalizacje->nazwa."'>".($specjalizacje->nazwa)."</option>";
+                                 
+                                 }
+                      @endphp
+                      </select>
+                      <br>
+
+                      Lokalizacja: <select class="js-example-basic-single" name="miasto">
+                        @php
+                        foreach ($miasta as $miasta)
+                                 {
+                                 echo "<br>  <option value='".$miasta->nazwa."'>".($miasta->nazwa)."</option>";
+                                 }
+                      @endphp
+                    </select>
+                    <br>
+                    Opis: <input type="text" name="opis">
+                    <br>
+                    <button type="submit" class="btn btn-primary">
+                     Dodaj
+                    </button>
+
+                </form>
+
+
+                </div>
            
         </div>
         
     </div>
 </div>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 @endsection
