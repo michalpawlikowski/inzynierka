@@ -12,30 +12,30 @@
                 <div class="card-header">Dodawanie nowego profilu</div>
                 <div class="card-body">
 
-                <form action="" method="POST">
+                <form action="{{route('home') }}" method="post">
+                    @csrf
                     Specjalizacja: 
                     <select class="js-example-basic-single" name="specjalizacja">
                         @php
                         foreach ($specjalizacje as $specjalizacje)
                                  {
                                  
-                                 echo "<br>  <option value='".$specjalizacje->nazwa."'>".($specjalizacje->nazwa)."</option>";
+                                 echo "<br>  <option value='".$specjalizacje->id."'>".($specjalizacje->nazwa)."</option>";
                                  
                                  }
                       @endphp
                       </select>
                       <br>
 
-                      Lokalizacja: <select class="js-example-basic-single" name="miasto">
+                      Miasto: <select class="js-example-basic-single" name="miasto">
                         @php
                         foreach ($miasta as $miasta)
                                  {
-                                 echo "<br>  <option value='".$miasta->nazwa."'>".($miasta->nazwa)."</option>";
+                                 echo "<br>  <option value='".$miasta->id."'>".($miasta->nazwa)."</option>";
                                  }
                       @endphp
                     </select>
                     <br>
-                    Opis: <input type="text" name="opis">
                     <br>
                     <button type="submit" class="btn btn-primary">
                      Dodaj

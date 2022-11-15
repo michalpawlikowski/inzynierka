@@ -7,55 +7,50 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        @php
+        foreach ($oferta as $oferta)
+        {
+echo "
+        <div class='col-md-8'>".$oferta->specjalizacje."
           
-            <div class="card">
-                <div class="card-header">{{ __('Proil 1') }} 
-                    <button type="button" class="btn btn-outline-success">Edytuj</button>
-                    <button type="button" class="btn btn-outline-danger">Kasuj</button>
+            <div class='card'>
+                <div class='card-header'>
+                    <button type='button' class='btn btn-outline-success'>Edytuj</button>
+                    <button type='button' class='btn btn-outline-danger'>Kasuj</button>
                 </div>
                 
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    
-                    {{'Dentysta'}}<br>
-                    {{'Adres'}}<br>
-                    {{'Cennik'}}<br>
-                    {{'Opis'}}<br>
-                </div>
+               asdasd
             </div>
         </div>
+";
+    }
+    @endphp    
 
-        <div class="col-md-8">
 
-            <div class="card">
-                <div class="card-header">{{ __('Proil 2') }} 
-                    <button type="button" class="btn btn-outline-success">Edytuj</button>
-                    <button type="button" class="btn btn-outline-danger">Kasuj</button>
-                </div>
+      <div class="col-md-8">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="card">
+            <div class="card-header">{{ __('Proil 2') }} 
+                <button type="button" class="btn btn-outline-success">Edytuj</button>
+                <button type="button" class="btn btn-outline-danger">Kasuj</button>
+            </div>
 
-                    
-                    {{'Kardiolog'}}<br>
-                    {{'Adres'}}<br>
-                    {{'Cennik'}}<br>
-                    {{'Opis'}}<br>
-                </div>
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                
+                {{'Kardiolog'}}<br>
+                {{'Adres'}}<br>
+                {{'Cennik'}}<br>
+                {{'Opis'}}<br>
             </div>
         </div>
-        
+    </div>
     </div>
 </div>
 @endsection

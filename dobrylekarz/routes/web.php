@@ -25,3 +25,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/add', [App\Http\Controllers\AddController::class, 'index'])->name('add');
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+
+
+
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'indexadd'])->name('home');
+
+//Route::post('/home', 'HomeController@someMethod');
