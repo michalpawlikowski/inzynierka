@@ -6,8 +6,8 @@
        
         <main class="py-4">
             <div class="container">
-                <form>
-
+                <form action="{{route('list') }}" method="get">
+                    @csrf
                     <b> Opcja 1</b>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -26,7 +26,6 @@
 
                     <select class="js-example-basic-single" name="specjalizacja">
 
-                        <option value="AL">Dentysta</option>
 
                         @php
                         foreach ($specjalizacje as $specjalizacje)
@@ -44,7 +43,6 @@
 
                     <select class="js-example-basic-single" name="miasto">
 
-                        <option value="AL">Limanowa</option>
 
                         @php
                         foreach ($miasta as $miasta)

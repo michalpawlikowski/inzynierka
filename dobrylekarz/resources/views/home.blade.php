@@ -11,23 +11,24 @@
         foreach ($oferta as $oferta)
         {
 echo "
-        <div class='col-md-8'>".$oferta->specjalizacje."
+        <div class='col-md-8'>
           
             <div class='card'>
                 <div class='card-header'>
+                    ".$oferta->specjalizacje."  <br>  ".$oferta->miasta."
                     <button type='button' class='btn btn-outline-success'>Edytuj</button>
                     <button type='button' class='btn btn-outline-danger'>Kasuj</button>
                 </div>
                 
 
-               asdasd
+               Opis:
             </div>
         </div>
 ";
     }
     @endphp    
 
-
+<!--
       <div class="col-md-8">
 
         <div class="card">
@@ -51,6 +52,8 @@ echo "
             </div>
         </div>
     </div>
+-->
+
     </div>
 </div>
 @endsection

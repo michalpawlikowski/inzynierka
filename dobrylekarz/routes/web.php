@@ -29,5 +29,6 @@ Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'
 
 
 Route::post('/home', [App\Http\Controllers\HomeController::class, 'indexadd'])->name('home');
+Route::get('/list', [App\Http\Controllers\ListController::class, 'index'])->name('list');
 
 //Route::post('/home', 'HomeController@someMethod');
