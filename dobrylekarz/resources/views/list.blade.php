@@ -16,7 +16,7 @@ echo "
            
          
                 <div class='card-header'>
-                    ".$listalekarzy->name." ".$listalekarzy->surname."
+                   <a href='list/profil/$listalekarzy->oferta_id'> ".$listalekarzy->name." ".$listalekarzy->surname."</a>
                     <br>
                     Miejscowość: ".$listalekarzy->miasto."
                     <br>
