@@ -6,7 +6,7 @@
        
         <main class="py-4">
             <div class="container">
-                <form action="{{route('list') }}" method="get">
+                <form action="" method="get">
                     @csrf
                     <b> Opcja 1</b>
                     <div class="form-check">
@@ -27,14 +27,7 @@
                     <select class="js-example-basic-single" name="specjalizacja">
 
 
-                        @php
-                        foreach ($specjalizacje as $specjalizacje)
-                                 {
-                                 
-                                 echo "<br>  <option value='".$specjalizacje->nazwa."'>".($specjalizacje->nazwa)."</option>";
-                                 
-                                 }
-                      @endphp
+                 
 
 
                     </select>
@@ -44,15 +37,6 @@
                     <select class="js-example-basic-single" name="miasto">
 
 
-                        @php
-                        foreach ($miasta as $miasta)
-                                 {
-                                 
-                                 echo "<br>  <option value='".$miasta->nazwa."'>".($miasta->nazwa)."</option>";
-                                 
-                                 }
-                                 
-                      @endphp
 
 
                     </select>
@@ -66,6 +50,10 @@
             </div>
         </main>
         
+    </div>
+
+    <div class = "row">
+        <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">
     </div>
 </div>
 

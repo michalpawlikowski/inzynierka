@@ -15,26 +15,19 @@
                 <form action="{{route('home') }}" method="post">
                     @csrf
                     Specjalizacja: 
-                    <select class="js-example-basic-single" name="specjalizacja">
+                    <select class="js-example-basic-single" name="specializations">
                         @php
-                        foreach ($specjalizacje as $specjalizacje)
+                        foreach ($specializations as $specializations)
                                  {
                                  
-                                 echo "<br>  <option value='".$specjalizacje->id."'>".($specjalizacje->nazwa)."</option>";
+                                 echo "<br>  <option value='".$specializations->id."'>".($specializations->name)."</option>";
                                  
                                  }
                       @endphp
                       </select>
                       <br>
 
-                      Miasto: <select class="js-example-basic-single" name="miasto">
-                        @php
-                        foreach ($miasta as $miasta)
-                                 {
-                                 echo "<br>  <option value='".$miasta->id."'>".($miasta->nazwa)."</option>";
-                                 }
-                      @endphp
-                    </select>
+      
                     <br>
                     <br>
                     <button type="submit" class="btn btn-primary">

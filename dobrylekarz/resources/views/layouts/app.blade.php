@@ -17,7 +17,18 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var options = {
+                types: ['(cities)'],
+                componentRestrictions: {country: "us"}
+            };
+            var input = document.getElementById('searchTextField');
+            var autocomplete = new google.maps.places.Autocomplete(input , options);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -66,7 +77,7 @@
 
                                    
 
-                                    <a href={{ route('settings') }} class="dropdown-item" >
+                                    <a href='' class="dropdown-item" >
                                         {{ __('Ustawienia konta') }}
                                     </a>
 

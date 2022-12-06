@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use DB;
 class AddController extends Controller
 {
     //
@@ -13,9 +13,8 @@ class AddController extends Controller
     }
     public function index()
     {
-        $specjalizacje = DB::table('specializations')->get();
-        $miasta = DB::table('miasta')->get();
-        return view('add', ['miasta' => $miasta], ['specjalizacje' => $specjalizacje]);
-        
+
+        $specializations = DB::table('specializations')->get();
+        return view('add', ['specializations' => $specializations]);
     }
 }

@@ -1,7 +1,0 @@
-composer create-project laravel/laravel dobrylekarz
-
-composer require laravel/ui
-
-php artisan ui bootstrap --auth
-
-php artisan serve

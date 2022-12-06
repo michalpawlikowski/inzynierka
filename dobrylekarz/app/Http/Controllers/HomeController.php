@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use Auth;
+use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -24,45 +25,36 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $namespecializations = DB::table('specializations')->get();
         $userId = Auth::id();
-        $ofertalista = DB::table('oferta')
+
+        $offerlist = DB::table('offer')
             ->join('specializations', 'specializations_id', '=', 'specializations.id')
-            ->join('miasta', 'miasto_id', '=', 'miasta.id')
-            ->select('oferta.*', 'specializations.nazwa as specjalizacje', 'miasta.nazwa as miasta')
+            ->select('offer.*', 'specializations.name as specializations')
             ->where('users_id',$userId)
             ->get();
 
 
-        
-        return view('home', ['specializations' => $namespecializations], ['oferta' => $ofertalista]);
-        
+        return view('home', ['offerlist' => $offerlist]);
+
     }
 
     public function indexadd(Request $request)
     {
-        $namespecializations = DB::table('specializations')->get();
+        
 
-        $specjalizacja = $request->specjalizacja; 
-        $miasto = $request->miasto; 
+        $specializations = $request->specializations; 
+
         $userId = Auth::id();
 
-        DB::table('oferta')->insert(
+        DB::table('offer')->insert(
             array(
                    'users_id'     =>   $userId, 
-                   'specializations_id'   =>  $specjalizacja ,
-                   'miasto_id'   =>   $miasto
+                   'specializations_id'   =>  $specializations ,
+                   'description' => '',
+                   'status'   =>   0
             )
        );
         
        return redirect()->route('home');
-
-
-        
     }
-
-
-    
-
-
 }

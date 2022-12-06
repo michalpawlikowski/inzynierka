@@ -2,58 +2,34 @@
 
 @section('content')
 <div class="container">
-    <a href={{ route('add') }}> <button type="button" class="btn btn-success">Dodaj nowy profil</button> </a>
-
-
+    <a href='/add'> <button type="button" class="btn btn-success">Dodaj nowy profil</button> </a>
     <div class="row justify-content-center">
-
+        
         @php
-        foreach ($oferta as $oferta)
+        foreach ($offerlist as $offerlist)
         {
 echo "
         <div class='col-md-8'>
           
             <div class='card'>
                 <div class='card-header'>
-                    ".$oferta->specjalizacje."  <br>  ".$oferta->miasta."
-                    <button type='button' class='btn btn-outline-success'>Edytuj</button>
-                    <button type='button' class='btn btn-outline-danger'>Kasuj</button>
+                     ".$offerlist->specializations."  
+                     <a href='editprofil/$offerlist->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
+                        
+                    <a href='deleteprofil/$offerlist->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a>
                 </div>
                 
 
-               Opis:
+        
             </div>
+            <br>
         </div>
+        
 ";
     }
     @endphp    
-
-<!--
-      <div class="col-md-8">
-
-        <div class="card">
-            <div class="card-header">{{ __('Proil 2') }} 
-                <button type="button" class="btn btn-outline-success">Edytuj</button>
-                <button type="button" class="btn btn-outline-danger">Kasuj</button>
-            </div>
-
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                
-                {{'Kardiolog'}}<br>
-                {{'Adres'}}<br>
-                {{'Cennik'}}<br>
-                {{'Opis'}}<br>
-            </div>
-        </div>
-    </div>
--->
-
     </div>
 </div>
 @endsection
+
+

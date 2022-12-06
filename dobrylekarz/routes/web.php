@@ -14,21 +14,45 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    $miasta = DB::table('miasta')->get();
-    $specjalizacje = DB::table('specializations')->get();
-    return view('welcome', ['miasta' => $miasta], ['specjalizacje' => $specjalizacje]);
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
 Route::get('/add', [App\Http\Controllers\AddController::class, 'index'])->name('add');
-Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
 
-
+Auth::routes();
 
 Route::post('/home', [App\Http\Controllers\HomeController::class, 'indexadd'])->name('home');
-Route::get('/list', [App\Http\Controllers\ListController::class, 'index'])->name('list');
 
-//Route::post('/home', 'HomeController@someMethod');
+Auth::routes();
+
+Route::get('/editprofil/{numberprofil}', [App\Http\Controllers\EditProfilController::class, 'index'])->name('editprofil');
+
+Auth::routes();
+
+Route::get('/deleteprofil/{numberprofil}', [App\Http\Controllers\DeleteProfilController::class, 'index'])->name('deleteprofil');
+
+Auth::routes();
+
+Route::get('/editprofil/addlocation/{numberprofil}', [App\Http\Controllers\AddLocationController::class, 'index'])->name('addlocation');
+
+Auth::routes();
+
+Route::get('/editprofil/adddescription/{numberprofil}', [App\Http\Controllers\AdddescriptionController::class, 'index'])->name('adddescription');
+
+Auth::routes();
+
+Route::post('/editprofil/adddescription/{numberprofil}', [App\Http\Controllers\AdddescriptionController::class, 'indexadd'])->name('adddescription');
