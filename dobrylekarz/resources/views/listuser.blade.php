@@ -55,7 +55,7 @@
         <th>Nazwisko</th>
         <th>Data urodzenia</th>
         <th>Email</th>
-        <th>Wyświetl</th>
+        <th>Edycja</th>
         <th>Skasuj</th>
       </tr>
     </thead>

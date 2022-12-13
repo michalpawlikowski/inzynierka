@@ -83,7 +83,7 @@
 
                                     @if (Auth::user()->status == 1)
                                     <a href={{ route('adminpanel') }} class="dropdown-item" >
-                                        {{ __('Panel Admina') }}
+                                        {{ __('Panel administratora') }}
                                     </a>
                                     @endif
 

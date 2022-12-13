@@ -13,37 +13,45 @@
 
                     Specjalizacja:
 
-                    <select class="js-example-basic-single" name="specjalizacja">
+                    <select class="js-example-basic-single" name="miasto">
 
 
-                 
-
-
-                    </select>
+                        @php
+                        foreach ($specializations as $specializations)
+                                 {
+                                 
+                                    
+                                    echo "<option value ='$specializations->id'>$specializations->name </option> ";
+                                 
+                                 }
+                                 
+                      @endphp
+                      <br>
+                       </select>
                     <br>
                     Miasto:
 
                     <select class="js-example-basic-single" name="miasto">
 
 
-
-
-                    </select>
+                        @php
+                        foreach ($miasta as $miasta)
+                                 {
+                                    echo "<option value ='$miasta->id'>$miasta->nazwa </option> ";
+                                 }
+                                 
+                      @endphp
+                      <br>
+                       </select>
                     <br>
                     <button type="submit" class="btn btn-primary">
                         {{'Szukaj' }}
                     </button>
-
                 </form>
-
             </div>
         </main>
-        
     </div>
 
-    <div class = "row">
-        <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">
-    </div>
 </div>
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
