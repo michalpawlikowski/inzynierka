@@ -5,7 +5,8 @@ use Auth;
 use DB;
 use Illuminate\Http\Request;
 
-class AddLocationController extends Controller
+
+class DeleteCitiesController extends Controller
 {
     public function __construct()
     {
@@ -15,22 +16,25 @@ class AddLocationController extends Controller
     {
 
         $numberprofil = $request->numberprofil;
+        $location = $request->location;
+ 
+ 
+  
+
         $userId = Auth::id();
 
-        $testuser = DB::table('offer')
-            ->select('users_id')
-            ->where('id',$numberprofil)
-            ->get();
-            foreach ($testuser as $testuser)
-            {
-                $userprofil=$testuser->users_id;
-            }
-            if($userprofil==$userId)
-            {
-                $listcities = DB::table('miasta')
+        $listcities = DB::table('miasta')
             ->select('miasta.*')
             ->get();
-            
+
+        $deleted = DB::table('offeraddres')
+            ->where('id', $location)
+            ->delete();
+
+            $deleted2 = DB::table('offerservices')
+            ->where('offer_addres_id', $location)
+            ->delete();
+
             $location = DB::table('offeraddres')
             ->join('miasta', 'miasto_id', '=', 'miasta.id')
             ->select('offeraddres.*','miasta.nazwa as miasto')
@@ -41,9 +45,6 @@ class AddLocationController extends Controller
 
                 return view('addlocation', ['numberprofil' => $numberprofil, 'listcities' => $listcities, 'location' => $location]);
             }
-            else
-            {
-                return redirect()->route('home');
-            }
-    }
+        
+    
 }

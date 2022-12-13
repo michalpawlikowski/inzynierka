@@ -105,8 +105,23 @@ Auth::routes();
 
 Route::get('/adminpanel/listuser/edit/save/{numberuser}', [App\Http\Controllers\EditUserSaveController::class, 'index'])->name('editusersave');
 
+Auth::routes();
 
+Route::get('/editprofil/addlocation/addcities/{numberprofil}', [App\Http\Controllers\AddCitiesController::class, 'index'])->name('addcities');
 
+Auth::routes();
 
+Route::get('/editprofil/addlocation/deletecities/{location}/{numberprofil}', [App\Http\Controllers\DeleteCitiesController::class, 'index'])->name('deletecities');
 
+Auth::routes();
+
+Route::get('/editprofil/addlocation/addservices/{numberaddres}', [App\Http\Controllers\AddServicesUserController::class, 'index'])->name('addservicesuser');
+
+Auth::routes();
+
+Route::get('/editprofil/addlocation/addservices/save/{numberaddres}', [App\Http\Controllers\SaveServicesuserController::class, 'index'])->name('saveservicesuser');
+
+Auth::routes();
+
+Route::get('/editprofil/addlocation/deleteserviceuser/{opis}/{numberaddres}', [App\Http\Controllers\DeleteServicesUserController::class, 'index'])->name('deleteservicesuser');
 
