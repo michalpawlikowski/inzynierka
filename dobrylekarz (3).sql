@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Lis 2022, 11:43
+-- Czas generowania: 13 Gru 2022, 12:15
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -994,34 +994,78 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_11_02_183516_create_specializations', 2);
+(5, '2022_11_28_164328_create_specjalizacje', 1),
+(6, '2022_11_28_170213_create_offer', 1),
+(7, '2022_12_12_135457_create_services', 1),
+(9, '2022_12_13_083057_create_offeraddres', 2),
+(11, '2022_12_13_095136_create_offerservices', 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `oferta`
+-- Struktura tabeli dla tabeli `offer`
 --
 
-CREATE TABLE `oferta` (
-  `oferta_id` int(11) NOT NULL,
+CREATE TABLE `offer` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `users_id` int(11) NOT NULL,
   `specializations_id` int(11) NOT NULL,
-  `miasto_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `statusAdmin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `oferta`
+-- Zrzut danych tabeli `offer`
 --
 
-INSERT INTO `oferta` (`oferta_id`, `users_id`, `specializations_id`, `miasto_id`) VALUES
-(16, 3, 1, 1),
-(17, 3, 2, 2),
-(18, 3, 1, 1),
-(19, 3, 2, 2),
-(20, 3, 4, 1),
-(21, 5, 1, 1),
-(22, 5, 1, 1),
-(23, 5, 1, 2);
+INSERT INTO `offer` (`id`, `users_id`, `specializations_id`, `description`, `status`, `statusAdmin`) VALUES
+(19, 2, 1, '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `offeraddres`
+--
+
+CREATE TABLE `offeraddres` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `offer_id` int(11) NOT NULL,
+  `miasto_id` int(11) NOT NULL,
+  `ulica` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `numerulicy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Zrzut danych tabeli `offeraddres`
+--
+
+INSERT INTO `offeraddres` (`id`, `offer_id`, `miasto_id`, `ulica`, `numerulicy`) VALUES
+(38, 19, 1, 'qwe', '12'),
+(39, 19, 2, 'sad', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `offerservices`
+--
+
+CREATE TABLE `offerservices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `offer_addres_id` int(11) NOT NULL,
+  `usluga_id` int(11) NOT NULL,
+  `cena` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Zrzut danych tabeli `offerservices`
+--
+
+INSERT INTO `offerservices` (`id`, `offer_addres_id`, `usluga_id`, `cena`) VALUES
+(28, 35, 53, 123),
+(29, 38, 53, 0),
+(30, 38, 54, 0),
+(31, 39, 53, 0);
 
 -- --------------------------------------------------------
 
@@ -1046,6 +1090,7 @@ CREATE TABLE `personal_access_tokens` (
   `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
@@ -1057,28 +1102,42 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `services`
+--
+
+CREATE TABLE `services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `specializations_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Zrzut danych tabeli `services`
+--
+
+INSERT INTO `services` (`id`, `name`, `specializations_id`) VALUES
+(53, 'konsultacja', 1),
+(54, 'wyrwanie 8', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `specializations`
 --
 
 CREATE TABLE `specializations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nazwa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Zrzut danych tabeli `specializations`
 --
 
-INSERT INTO `specializations` (`id`, `nazwa`, `created_at`, `updated_at`) VALUES
-(1, 'Dentysta', NULL, NULL),
-(2, 'Kardiolog', NULL, NULL),
-(3, 'Psycholog', NULL, NULL),
-(4, 'Ortopeda', NULL, NULL),
-(5, 'Dermatolog', NULL, NULL),
-(6, 'Psychiatra', NULL, NULL),
-(7, 'Stomatolog', NULL, NULL);
+INSERT INTO `specializations` (`id`, `name`) VALUES
+(1, 'Dentysta'),
+(2, 'Okulista'),
+(31, 'Ortopeda');
 
 -- --------------------------------------------------------
 
@@ -1096,17 +1155,17 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `date`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'Michał', 'Pawlikowski', '1999-07-25', 'admin@admin.pl', NULL, '$2y$10$gp0UG7T48TM1UahKd6Unp.UJ0LtCvfernnAm8k57AW8h3WwVuoBU.', NULL, '2022-10-24 13:43:52', '2022-10-24 13:43:52'),
-(4, 'dwq', 'dqw', '2022-10-31', '1@wp.pl', NULL, '$2y$10$bG2r/mmwAzZPClEUOrMUCOEFOvPV6VmQz1b7HzQ.8bRpcN9YJoTTy', NULL, '2022-11-14 14:21:18', '2022-11-14 14:21:18'),
-(5, 'Test', 'Test', '2022-11-19', 'test@test.pl', NULL, '$2y$10$5V6Cl15iQ/o0MRXefTnMcuPaS/VV8pt22wExyXc9GYaRYBKtztQlK', NULL, '2022-11-15 09:33:58', '2022-11-15 09:33:58');
+INSERT INTO `users` (`id`, `name`, `surname`, `date`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
+(1, 'Michał', 'Pawlikowski', '2022-11-01', 'michal0725@gmail.com', NULL, '$2y$10$lEMbwbHNVvw7lswvvR7B1eTAWkA3cwWW3oYHbD6EadeU4uX72AFu2', NULL, '2022-12-12 13:09:24', '2022-12-12 13:09:24', 1),
+(2, 'testaaaaaa', 'test', '2022-12-03', 'test@test.pl', NULL, '$2y$10$Dxi1eLnLGWy2yWS3c15.FOhhfIbsRvIzhwY0B2upalbvVLVj4yoG6', NULL, '2022-12-12 17:05:34', '2022-12-12 17:05:34', 0);
 
 -- --------------------------------------------------------
 
@@ -1165,10 +1224,22 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `oferta`
+-- Indeksy dla tabeli `offer`
 --
-ALTER TABLE `oferta`
-  ADD PRIMARY KEY (`oferta_id`);
+ALTER TABLE `offer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `offeraddres`
+--
+ALTER TABLE `offeraddres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `offerservices`
+--
+ALTER TABLE `offerservices`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `password_resets`
@@ -1183,6 +1254,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeksy dla tabeli `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `specializations`
@@ -1223,13 +1300,25 @@ ALTER TABLE `miasta`
 -- AUTO_INCREMENT dla tabeli `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT dla tabeli `oferta`
+-- AUTO_INCREMENT dla tabeli `offer`
 --
-ALTER TABLE `oferta`
-  MODIFY `oferta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `offer`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT dla tabeli `offeraddres`
+--
+ALTER TABLE `offeraddres`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT dla tabeli `offerservices`
+--
+ALTER TABLE `offerservices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT dla tabeli `personal_access_tokens`
@@ -1238,16 +1327,22 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT dla tabeli `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
 -- AUTO_INCREMENT dla tabeli `specializations`
 --
 ALTER TABLE `specializations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `woje`
