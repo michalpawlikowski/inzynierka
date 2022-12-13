@@ -83,7 +83,7 @@ Route::get('/adminpanel/listspecializations/listservices/{numberspecializations}
 
 Auth::routes();
 
-Route::get('//adminpanel/listspecializations/deleteservices/{numberservices}', [App\Http\Controllers\DeleteServicesController::class, 'index'])->name('deleteservices');
+Route::get('/adminpanel/listspecializations/deleteservices/{numberservices}', [App\Http\Controllers\DeleteServicesController::class, 'index'])->name('deleteservices');
 
 Auth::routes();
 
@@ -96,5 +96,17 @@ Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'
 Auth::routes();
 
 Route::get('/settings/save/{numberspecializations}', [App\Http\Controllers\SettingsSaveController::class, 'index'])->name('settingssave');
+
+Auth::routes();
+
+Route::get('/adminpanel/listuser/edit/{numberuser}', [App\Http\Controllers\EditUserController::class, 'index'])->name('edituser');
+
+Auth::routes();
+
+Route::get('/adminpanel/listuser/edit/save/{numberuser}', [App\Http\Controllers\EditUserSaveController::class, 'index'])->name('editusersave');
+
+
+
+
 
 

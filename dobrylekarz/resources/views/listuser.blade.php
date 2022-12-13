@@ -70,7 +70,7 @@
         <td>$listuser->surname</td>
         <td>$listuser->date</td>
         <td>$listuser->email</td>
-        <td><a href=''><button type='button' class='btn btn-outline-success'>Wyświetl</button></a>
+        <td><a href='/adminpanel/listuser/edit/$listuser->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
         <td><a href=''> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
       </tr>
       ";
