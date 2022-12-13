@@ -51,7 +51,8 @@ class HomeController extends Controller
                    'users_id'     =>   $userId, 
                    'specializations_id'   =>  $specializations ,
                    'description' => '',
-                   'status'   =>   0
+                   'status'   =>   0,
+                   'statusAdmin'   =>   0
             )
        );
         

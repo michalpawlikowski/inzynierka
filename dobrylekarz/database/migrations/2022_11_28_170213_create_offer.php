@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('specializations_id');
             $table->LONGTEXT('description');
             $table->integer('status');
+            $table->integer('statusAdmin');
             
         });
     }

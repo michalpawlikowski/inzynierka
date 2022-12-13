@@ -69,15 +69,25 @@
                                     {{ Auth::user()->name . ' ' .Auth::user()->surname }}
                                 </a>
                                 
+                           
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
+                                    
+
+                                    @if (Auth::user()->status == 0)
                                     <a href={{ route('home') }} class="dropdown-item" >
                                         {{ __('Moje profile') }}
                                     </a>
+                                    @endif
 
-                                   
+                                    @if (Auth::user()->status == 1)
+                                    <a href={{ route('adminpanel') }} class="dropdown-item" >
+                                        {{ __('Panel Admina') }}
+                                    </a>
+                                    @endif
 
-                                    <a href='' class="dropdown-item" >
+                                    <a href={{ route('settings') }} class="dropdown-item" >
                                         {{ __('Ustawienia konta') }}
                                     </a>
 
@@ -91,13 +101,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    
-                                    
                                 </div>
-                            
 
-                                
                             </li>
+
+
+
                         @endguest
                     </ul>
                 </div>
