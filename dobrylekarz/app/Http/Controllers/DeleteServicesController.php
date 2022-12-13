@@ -40,8 +40,8 @@ class DeleteServicesController extends Controller
             ->get();
 
 
-            return view('listservices', ['numberspecializations' => $numberspecializations,'listservices' => $listservices]);
-
+            //return view('listservices', ['numberspecializations' => $numberspecializations,'listservices' => $listservices]);
+            return redirect('/adminpanel/listspecializations/listservices/'.$numberspecializations);
            
         }
         else

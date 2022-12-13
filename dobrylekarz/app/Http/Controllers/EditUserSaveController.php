@@ -36,7 +36,9 @@ class EditUserSaveController extends Controller
             ->get();
 
 
-            return view('edituser', ['user'=>$user]);
+            //return view('edituser', ['user'=>$user]);
+
+            return redirect('/adminpanel/listuser/edit/'.$numberuser);
         }
         else
         {

@@ -50,7 +50,7 @@
     </table>
   Dodaj nową lokalizację:
   
-  <form action="/editprofil/addlocation/addcities/{{$numberprofil}}" method="get">
+  <form action="/editprofil/addlocation/addcities/{{$numberprofil}}" method="post">
 
 
    @csrf

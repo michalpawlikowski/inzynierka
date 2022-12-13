@@ -47,7 +47,8 @@ class AddCitiesController extends Controller
 
 
 
-                return view('addlocation', ['numberprofil' => $numberprofil, 'listcities' => $listcities, 'location' => $location]);
+                //return view('addlocation', ['numberprofil' => $numberprofil, 'listcities' => $listcities, 'location' => $location]);
+                return redirect('/editprofil/addlocation/'.$numberprofil);
             }
         
     

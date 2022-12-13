@@ -75,9 +75,9 @@
   </table>
 Dodaj nową usługe:
 
-<form action="/adminpanel/listspecializations/addservices/{{$numberspecializations}}" method="GET">
+<form action="/adminpanel/listspecializations/addservices/{{$numberspecializations}}" method="post">
  @csrf
-  <input type="text" class="form-control" name="nameservices" placeholder="Nazwa usługi">
+  <input type="text" class="form-control" name="nameservices" placeholder="Nazwa usługi" required>
   
   <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>

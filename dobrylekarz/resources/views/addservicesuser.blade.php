@@ -76,7 +76,7 @@
   </table>
 Dodaj nową usługe:
 
-<form action="/editprofil/addlocation/addservices/save/{{$numberaddres}}" method="GET">
+<form action="/editprofil/addlocation/addservices/save/{{$numberaddres}}" method="post">
  @csrf
  <select class="js-example-basic-single" name="services">
 

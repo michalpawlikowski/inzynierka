@@ -34,8 +34,8 @@ class DeleteSpecializationsController extends Controller
             ->get();
 
 
-            return view('listspecializations', ['listspecializations' => $listspecializations]);
-
+            //return view('listspecializations', ['listspecializations' => $listspecializations]);
+            return redirect('/adminpanel/listspecializations');
            
         }
         else

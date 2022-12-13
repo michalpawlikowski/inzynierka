@@ -67,11 +67,11 @@ Route::get('/adminpanel/listuser', [App\Http\Controllers\ListUserController::cla
 
 Auth::routes();
 
-Route::get('/adminpanel/listspecializations', [App\Http\Controllers\ListSpecializationsController::class, 'index'])->name('listuser');
+Route::get('/adminpanel/listspecializations', [App\Http\Controllers\ListSpecializationsController::class, 'index'])->name('listspecializations');
 
 Auth::routes();
 
-Route::get('/adminpanel/listspecializations/addspecializations', [App\Http\Controllers\AddSpecializationsController::class, 'index'])->name('addspecializations');
+Route::post('/adminpanel/listspecializations/addspecializations', [App\Http\Controllers\AddSpecializationsController::class, 'index'])->name('addspecializations');
 
 Auth::routes();
 
@@ -87,7 +87,7 @@ Route::get('/adminpanel/listspecializations/deleteservices/{numberservices}', [A
 
 Auth::routes();
 
-Route::get('/adminpanel/listspecializations/addservices/{numberspecializations}', [App\Http\Controllers\AddServicesController::class, 'index'])->name('addservices');
+Route::post('/adminpanel/listspecializations/addservices/{numberspecializations}', [App\Http\Controllers\AddServicesController::class, 'index'])->name('addservices');
 
 Auth::routes();
 
@@ -107,7 +107,7 @@ Route::get('/adminpanel/listuser/edit/save/{numberuser}', [App\Http\Controllers\
 
 Auth::routes();
 
-Route::get('/editprofil/addlocation/addcities/{numberprofil}', [App\Http\Controllers\AddCitiesController::class, 'index'])->name('addcities');
+Route::post('/editprofil/addlocation/addcities/{numberprofil}', [App\Http\Controllers\AddCitiesController::class, 'index'])->name('addcities');
 
 Auth::routes();
 
@@ -119,7 +119,7 @@ Route::get('/editprofil/addlocation/addservices/{numberaddres}', [App\Http\Contr
 
 Auth::routes();
 
-Route::get('/editprofil/addlocation/addservices/save/{numberaddres}', [App\Http\Controllers\SaveServicesuserController::class, 'index'])->name('saveservicesuser');
+Route::post('/editprofil/addlocation/addservices/save/{numberaddres}', [App\Http\Controllers\SaveServicesuserController::class, 'index'])->name('saveservicesuser');
 
 Auth::routes();
 

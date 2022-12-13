@@ -27,6 +27,8 @@ class EditUserController extends Controller
 
 
             return view('edituser', ['user'=>$user]);
+
+            
         }
         else
         {

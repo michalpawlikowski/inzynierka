@@ -60,7 +60,8 @@ class SaveServicesUserController extends Controller
 
 
 
-           return view('addservicesuser', ['listservices' => $listservices, 'numberaddres' => $numberaddres, 'opis' => $opis]);
+           //return view('addservicesuser', ['listservices' => $listservices, 'numberaddres' => $numberaddres, 'opis' => $opis]);
+           return redirect('/editprofil/addlocation/addservices/'.$numberaddres);
           
         
 }

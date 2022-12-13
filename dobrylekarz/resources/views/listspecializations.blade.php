@@ -77,9 +77,9 @@
   </table>
 Dodaj nową specjalizację:
 
-<form action="/adminpanel/listspecializations/addspecializations" method="get">
+<form action="/adminpanel/listspecializations/addspecializations" method="post">
  @csrf
-  <input type="text" class="form-control" name="namespecializations" placeholder="Nazwa specjalizacji">
+  <input type="text" class="form-control" name="namespecializations" placeholder="Nazwa specjalizacji" required>
   
   <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
