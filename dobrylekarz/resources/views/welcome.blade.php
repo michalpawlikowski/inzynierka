@@ -6,14 +6,14 @@
        
         <main class="py-4">
             <div class="container">
-                <form action="" method="get">
+                <form action="/search" method="post">
                     @csrf
                     
                    
 
                     Specjalizacja:
 
-                    <select class="js-example-basic-single" name="miasto">
+                    <select class="js-example-basic-single" name="specializations">
 
 
                         @php
@@ -31,7 +31,7 @@
                     <br>
                     Miasto:
 
-                    <select class="js-example-basic-single" name="miasto">
+                    <select class="js-example-basic-single" name="city">
 
 
                         @php

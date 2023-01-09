@@ -128,3 +128,14 @@ Auth::routes();
 
 Route::get('/editprofil/addlocation/deleteserviceuser/{opis}/{numberaddres}', [App\Http\Controllers\DeleteServicesUserController::class, 'index'])->name('deleteservicesuser');
 
+Auth::routes();
+
+Route::get('/adminpanel/listoffer', [App\Http\Controllers\ListOfferController::class, 'index'])->name('listoffer');
+
+Auth::routes();
+
+Route::post('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
+
+Auth::routes();
+
+Route::get('/search/{number}', [App\Http\Controllers\SearchOfferController::class, 'index'])->name('searchoffer');

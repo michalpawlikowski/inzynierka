@@ -35,54 +35,49 @@
   background-color: #f1f1f1;
 }
     </style>
+    
 <div class="container">
     @include('adminlist')
+    <br><br>
     <div class="row justify-content-center">
         
 
         <div class='col-md-8'>
-          
+        
             <div class='card'>
                 <div class='card-header'>
-                     
-                 
-            <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
-  <br>
+
+                  <h5>Lista ofert</h5>
+                  <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
   <table class='table table-bordered table-striped'>
     <thead>
       <tr>
         <th>Imię</th>
         <th>Nazwisko</th>
-        <th>Data urodzenia</th>
-        <th>Email</th>
-        <th>Oferty</th>
-        <th>Edycja</th>
-        <th>Skasuj</th>
+        <th>Specjalizacja</th>
+        <th>Wyśiwetl ofertę</th>
       </tr>
     </thead>
     <tbody id='myTable'>
-        @php
-        foreach ($listuser as $listuser)
-        {
-            echo "
-        
-      <tr>
-        <td>$listuser->name</td>
-        <td>$listuser->surname</td>
-        <td>$listuser->date</td>
-        <td>$listuser->email</td>
-        <td><a href='/adminpanel/listuser/offer/$listuser->id'><button type='button' class='btn btn-outline-success'>Oferty</button></a>
-        <td><a href='/adminpanel/listuser/edit/$listuser->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
-        <td><a href=''> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
-      </tr>
-      ";
-        }
+      @php
+      foreach ($listoffer as $listoffer)
+      {
+          echo "
+      
+    <tr>
+      
+      <td>$listoffer->name1</td>
+      <td>$listoffer->surname1</td>
+      <td>$listoffer->specializations</td>
+      <td><a href='/adminpanel/listoffer/$listoffer->id'><button type='button' class='btn btn-outline-success'>Wyświetl ofertę</button></a>
+    </tr>
+    ";
+      }
 
-        @endphp
+      @endphp
     </tbody>
   </table>
 
-                        
                     
                 </div>
                 
