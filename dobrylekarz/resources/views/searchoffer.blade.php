@@ -13,7 +13,7 @@ foreach ($userinfo as $userinfo)
 
 {
 
-echo "$userinfo->name1 $userinfo->surname1
+echo "<h3>$userinfo->name1 $userinfo->surname1</h3>
 <br>
 Opis:  $userinfo->description
 ";
@@ -37,9 +37,20 @@ Opis:  $userinfo->description
                              
                              <br>
                                 adres: $listoffer->ulica $listoffer->numerulicy
-                            
+                            <br>
+                                        
+                                    ";
+                                
+                                    foreach ($servicesoffer as $servicesoffer1)
+                                    {
+                                        if($servicesoffer1->adres == $listoffer->id)
+                                        {
+                                            echo "$servicesoffer1->usluga  <br>";
+                                        }
+                                    }
 
-                                    
+
+                          echo "          
                         </div>
                         
         
@@ -50,6 +61,8 @@ Opis:  $userinfo->description
                 
         ";
             }
+            
+            
             @endphp    
 
 

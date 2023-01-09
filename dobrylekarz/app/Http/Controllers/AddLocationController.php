@@ -29,6 +29,7 @@ class AddLocationController extends Controller
             {
                 $listcities = DB::table('miasta')
             ->select('miasta.*')
+            ->orderBy('miasta.nazwa', 'asc')
             ->get();
             
             $location = DB::table('offeraddres')

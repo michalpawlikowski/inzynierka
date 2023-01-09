@@ -11,6 +11,7 @@ class WelcomeController extends Controller
 
         $miasta = DB::table('miasta')
             ->select('miasta.*')
+            ->orderBy('miasta.nazwa', 'asc')
             ->get();
 
         $specializations = DB::table('specializations')
