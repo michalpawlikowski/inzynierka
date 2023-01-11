@@ -37,15 +37,23 @@ Opis:  $userinfo->description
                              
                              <br>
                                 adres: $listoffer->ulica $listoffer->numerulicy
-                            <br>
+                            <br><br>
                                         
                                     ";
-                                
+                                   
+                                $jeden=0;
                                     foreach ($servicesoffer as $servicesoffer1)
                                     {
+                                        
+                                        
                                         if($servicesoffer1->adres == $listoffer->id)
                                         {
-                                            echo "$servicesoffer1->usluga  <br>";
+                                            if($jeden == 0)
+                                            {
+                                                echo "Dostępne usługi: <br>";
+                                                $jeden++;
+                                            }
+                                            echo "  -$servicesoffer1->usluga  - $servicesoffer1->cena zł <br>";
                                         }
                                     }
 
@@ -65,6 +73,26 @@ Opis:  $userinfo->description
             
             @endphp    
 
+
+                Dodaj swoją opinię: 
+                <form action="" method="get">
+                    @csrf
+                    Imię i nazwisko: <input type="text" class="form-control" name="ulica" placeholder="Imię i nazwisko" required>
+                    Opis:: <input type="text" class="form-control" name="numerulicy" placeholder="Opis" required>
+                    Ocena: 
+                    <select  name="ocena">
+
+                        <option value ='1'>1 </option> 
+                        <option value ='2'>2 </option> 
+                        <option value ='3'>3 </option> 
+                        <option value ='4'>4 </option> 
+                        <option value ='5'>5 </option>
+                        
+                       </select>
+
+<br>
+                     <button type="submit" class="btn btn-primary">Dodaj</button>
+                   </form>
 
             </div>
         </main>

@@ -43,7 +43,7 @@ class SearchOfferController extends Controller
             ->join('offeraddres', 'offer.id', '=', 'offer_id')
             ->join('offerservices', 'offeraddres.id', '=', 'offerservices.offer_addres_id')
             ->join('services', 'offerservices.usluga_id', '=', 'services.id')
-            ->select( 'services.name as usluga', 'offerservices.offer_addres_id as adres')
+            ->select( 'services.name as usluga', 'offerservices.offer_addres_id as adres', 'offerservices.cena as cena')
             ->where('offer.id',$number)
             ->get();
 
