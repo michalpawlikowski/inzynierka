@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('offeraddres', function (Blueprint $table) {
             $table->id();
-            $table->integer('offer_id');
-            $table->integer('miasto_id');
+            $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('miasto_id');
             $table->string('ulica');
             $table->string('numerulicy');
-            
+
+
+
+            $table->foreign('offer_id')->references('id')->on('offer')->onDelete('cascade');
+            $table->foreign('miasto_id')->references('id')->on('miasta')->onDelete('cascade');
+
         });
     }
 

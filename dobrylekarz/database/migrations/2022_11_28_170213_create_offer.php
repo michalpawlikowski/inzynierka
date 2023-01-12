@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('offer', function (Blueprint $table) {
             $table->id();
-            $table->integer('users_id');
-            $table->integer('specializations_id');
+            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('specializations_id');
             $table->LONGTEXT('description');
             $table->integer('status');
             $table->integer('statusAdmin');
-            
+
+
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('specializations_id')->references('id')->on('specializations')->onDelete('cascade');
         });
     }
 

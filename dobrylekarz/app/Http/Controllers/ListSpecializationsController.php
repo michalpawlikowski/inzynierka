@@ -28,7 +28,8 @@ class ListSpecializationsController extends Controller
         }
         else
         {
-            return view('welcome');
+           // return view('welcome');
+           return redirect('/');
         }
 
 

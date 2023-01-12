@@ -24,10 +24,12 @@ class SearchController extends Controller
             ->join('users', 'users_id', '=', 'users.id')
             ->join('offeraddres', 'offer.id', '=', 'offer_id')
             ->join('miasta', 'offeraddres.miasto_id', '=', 'miasta.id')
-            ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*', 'offer.id as id1')
+            ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*', 'offer.id as id1', 'users.id as iksde')
             ->where('offer.status',0)
             ->where('specializations_id',$specializations)
             ->where('miasto_id',$city)
+            ->distinct('offer.offer_id')
+            ->groupBy('offeraddres.miasto_id')
             ->get();
 
 

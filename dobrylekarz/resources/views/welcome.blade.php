@@ -2,26 +2,30 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" >
        
         <main class="py-4">
             <div class="container">
+
+                <h1> Znajdź odpowiedniego specjalistę w swojej okolicy</h1>
+
+
                 <form action="/search" method="post">
                     @csrf
                     
                    
 
                     Specjalizacja:
-
-                    <select class="js-example-basic-single" name="specializations">
+                    <br>
+                    <select class="js-example-basic-single"  style="width: 15%" name="specializations" >
 
 
                         @php
-                        foreach ($specializations as $specializations)
+                        foreach ($specializations as $specializations1)
                                  {
                                  
                                     
-                                    echo "<option value ='$specializations->id'>$specializations->name </option> ";
+                                    echo "<option value ='$specializations1->id'>$specializations1->name </option> ";
                                  
                                  }
                                  
@@ -30,14 +34,14 @@
                        </select>
                     <br>
                     Miasto:
-
-                    <select class="js-example-basic-single" name="city">
+<br>
+                    <select class="js-example-basic-single"  style="width: 15%" name="city" >
 
 
                         @php
-                        foreach ($miasta as $miasta)
+                        foreach ($miasta as $miasta1)
                                  {
-                                    echo "<option value ='$miasta->id'>$miasta->nazwa </option> ";
+                                    echo "<option value ='$miasta1->id'>$miasta1->nazwa </option> ";
                                  }
                                  
                       @endphp
@@ -49,6 +53,16 @@
                     </button>
                 </form>
             </div>
+
+
+
+
+
+
+
+            
+
+            
         </main>
     </div>
 
@@ -61,5 +75,8 @@
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
+
+
+        
     </script>
 @endsection

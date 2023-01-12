@@ -36,6 +36,7 @@ class AddLocationController extends Controller
             ->join('miasta', 'miasto_id', '=', 'miasta.id')
             ->select('offeraddres.*','miasta.nazwa as miasto')
             ->where('offer_id',$numberprofil)
+            ->orderBy('miasta.nazwa', 'asc')
             ->get();
 
 

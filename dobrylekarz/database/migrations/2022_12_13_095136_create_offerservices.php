@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('offerservices', function (Blueprint $table) {
             $table->id();
-            $table->integer('offer_addres_id');
-            $table->integer('usluga_id');
+            $table->unsignedBigInteger('offer_addres_id');
+            $table->unsignedBigInteger('usluga_id');
             $table->integer('cena');
           
+
+
+            $table->foreign('offer_addres_id')->references('id')->on('offeraddres')->onDelete('cascade');
+            $table->foreign('usluga_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 

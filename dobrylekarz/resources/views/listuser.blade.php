@@ -73,7 +73,7 @@
         <td>$listuser->email</td>
         <td><a href='/adminpanel/listuser/offer/$listuser->id'><button type='button' class='btn btn-outline-success'>Oferty</button></a>
         <td><a href='/adminpanel/listuser/edit/$listuser->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
-        <td><a href=''> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
+        <td><a href='/adminpanel/listuser/delete/$listuser->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
       </tr>
       ";
         }

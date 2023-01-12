@@ -25,6 +25,7 @@ class SearchOfferController extends Controller
             ->join('miasta', 'offeraddres.miasto_id', '=', 'miasta.id')
             ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*')
             ->where('offer.id',$number)
+            ->orderBy('miasta.nazwa', 'asc')
             ->get();
 
 

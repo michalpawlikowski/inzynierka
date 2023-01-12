@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcoe');
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
@@ -103,6 +103,10 @@ Route::get('/settings/save/{numberspecializations}', [App\Http\Controllers\Setti
 Auth::routes();
 
 Route::get('/adminpanel/listuser/edit/{numberuser}', [App\Http\Controllers\EditUserController::class, 'index'])->name('edituser');
+
+Auth::routes();
+
+Route::get('/adminpanel/listuser/delete/{numberuser}', [App\Http\Controllers\DeleteUserController::class, 'index'])->name('edituser');
 
 Auth::routes();
 
