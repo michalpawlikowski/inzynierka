@@ -66,17 +66,19 @@
                             <li class="nav-item dropdown">
                                  
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name . ' ' .Auth::user()->surname }}
+                                    {{ Auth::user()->name . ' ' .Auth::user()->surname}}
+                                  
                                 </a>
                                 
                            
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                    
+                                    @if (Auth::user()->activated == 0)
+                                    <b>{{'Konto nieaktywne'}}</b>
 
-                                    @if (Auth::user()->status == 0)
-                                    <a href={{ route('home') }} class="dropdown-item" >
+                            
+                                    <a onclick="myFunction()" class="dropdown-item" >
                                         {{ __('Moje profile') }}
                                     </a>
                                     @endif
@@ -84,6 +86,12 @@
                                     @if (Auth::user()->status == 1)
                                     <a href={{ route('adminpanel') }} class="dropdown-item" >
                                         {{ __('Panel administratora') }}
+                                    </a>
+                                    @endif
+
+                                    @if (Auth::user()->activated == 1)
+                                    <a href={{ route('home') }} class="dropdown-item" >
+                                        {{ __('Moje profile') }}
                                     </a>
                                     @endif
 
@@ -117,5 +125,11 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        function myFunction() {
+          alert("Poczekaj na aktywacje konta");
+        }
+        </script>
 </body>
 </html>

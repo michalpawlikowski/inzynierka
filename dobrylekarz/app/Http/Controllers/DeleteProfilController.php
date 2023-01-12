@@ -15,6 +15,13 @@ class DeleteProfilController extends Controller
 
     public function index(Request $request)
     {
+
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
     $numerofferaddres=0;
     $number = $request->numberprofil; 
     $deleted = DB::table('offer')
@@ -49,4 +56,5 @@ class DeleteProfilController extends Controller
     return redirect()->route('home');
 
     }
+}
 }

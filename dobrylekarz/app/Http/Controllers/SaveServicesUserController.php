@@ -15,6 +15,12 @@ class SaveServicesUserController extends Controller
 
     public function index(Request $request)
     {
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         
             $numberaddres = $request->numberaddres;
             $services = $request->services; 
@@ -66,4 +72,4 @@ class SaveServicesUserController extends Controller
         
 }
 }
-
+}

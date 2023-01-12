@@ -13,6 +13,12 @@ class EditProfilController extends Controller
     }
     public function index(Request $request)
     {
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $numberprofil = $request->numberprofil;
         $userId = Auth::id();
 
@@ -49,4 +55,5 @@ class EditProfilController extends Controller
 
         
     }
+}
 }

@@ -13,7 +13,12 @@ class AddDescriptionController extends Controller
     }
     public function index(Request $request)
     {
-
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $numberprofil = $request->numberprofil;
         $userId = Auth::id();
 
@@ -46,11 +51,19 @@ class AddDescriptionController extends Controller
             {
                 return redirect()->route('home');
             }
+        }
     }
+
+
 
     public function indexadd(Request $request)
     {
-
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $numberprofil = $request->numberprofil;
         $userId = Auth::id();
         $description= $request->description;
@@ -79,4 +92,5 @@ class AddDescriptionController extends Controller
                 return redirect()->route('home');
             }
     }
+}
 }

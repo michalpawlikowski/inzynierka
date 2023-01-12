@@ -25,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $userId = Auth::id();
 
         $offerlist = DB::table('offer')
@@ -36,11 +42,16 @@ class HomeController extends Controller
 
         return view('home', ['offerlist' => $offerlist]);
 
-    }
+    }}
 
     public function indexadd(Request $request)
     {
-        
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
 
         $specializations = $request->specializations; 
 
@@ -58,4 +69,5 @@ class HomeController extends Controller
         
        return redirect()->route('home');
     }
+}
 }

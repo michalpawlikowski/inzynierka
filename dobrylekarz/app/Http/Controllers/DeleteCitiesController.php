@@ -14,7 +14,12 @@ class DeleteCitiesController extends Controller
     }
     public function index(Request $request)
     {
-
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $numberprofil = $request->numberprofil;
         $location = $request->location;
  
@@ -48,4 +53,5 @@ class DeleteCitiesController extends Controller
             }
         
     
+}
 }

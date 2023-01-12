@@ -15,6 +15,12 @@ class DeleteServicesUserController extends Controller
 
     public function index(Request $request)
     {
+        if(Auth::user()->activated == 0)
+        {
+            return redirect('/');
+        }
+else
+{
         $numberaddres = $request->numberaddres;
         $numberservicesdelete=$request->opis;
         $deleted = DB::table('offerservices')
@@ -59,5 +65,5 @@ class DeleteServicesUserController extends Controller
 
     
 }
-}
+}}
 
