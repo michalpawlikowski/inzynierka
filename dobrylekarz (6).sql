@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Gru 2022, 12:15
--- Wersja serwera: 10.4.22-MariaDB
--- Wersja PHP: 8.0.13
+-- Czas generowania: 12 Sty 2023, 16:06
+-- Wersja serwera: 10.4.27-MariaDB
+-- Wersja PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -44,10 +44,10 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `miasta` (
-  `id` int(11) NOT NULL,
-  `woj_id` int(11) NOT NULL DEFAULT 0,
-  `nazwa` varchar(250) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `woj_id` bigint(20) UNSIGNED NOT NULL,
+  `nazwa` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Zrzut danych tabeli `miasta`
@@ -981,7 +981,7 @@ INSERT INTO `miasta` (`id`, `woj_id`, `nazwa`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -994,11 +994,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_11_28_164328_create_specjalizacje', 1),
-(6, '2022_11_28_170213_create_offer', 1),
-(7, '2022_12_12_135457_create_services', 1),
-(9, '2022_12_13_083057_create_offeraddres', 2),
-(11, '2022_12_13_095136_create_offerservices', 3);
+(5, '2022_01_10_131538_create_province', 1),
+(6, '2022_01_11_131517_create_city', 1),
+(7, '2022_11_28_164328_create_specjalizacje', 1),
+(8, '2022_11_28_170213_create_offer', 1),
+(9, '2022_12_12_135457_create_services', 1),
+(10, '2022_12_13_083057_create_offeraddres', 1),
+(11, '2022_12_13_095136_create_offerservices', 1);
 
 -- --------------------------------------------------------
 
@@ -1008,9 +1010,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `offer` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `users_id` int(11) NOT NULL,
-  `specializations_id` int(11) NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `users_id` bigint(20) UNSIGNED NOT NULL,
+  `specializations_id` bigint(20) UNSIGNED NOT NULL,
+  `description` longtext NOT NULL,
   `status` int(11) NOT NULL,
   `statusAdmin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1020,7 +1022,9 @@ CREATE TABLE `offer` (
 --
 
 INSERT INTO `offer` (`id`, `users_id`, `specializations_id`, `description`, `status`, `statusAdmin`) VALUES
-(19, 2, 1, '', 0, 0);
+(4, 2, 2, '', 0, 0),
+(5, 3, 2, 'Siema, naprawiam zęby', 0, 0),
+(6, 3, 4, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1030,10 +1034,10 @@ INSERT INTO `offer` (`id`, `users_id`, `specializations_id`, `description`, `sta
 
 CREATE TABLE `offeraddres` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `offer_id` int(11) NOT NULL,
-  `miasto_id` int(11) NOT NULL,
-  `ulica` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `numerulicy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `offer_id` bigint(20) UNSIGNED NOT NULL,
+  `miasto_id` bigint(20) UNSIGNED NOT NULL,
+  `ulica` varchar(255) NOT NULL,
+  `numerulicy` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1041,8 +1045,10 @@ CREATE TABLE `offeraddres` (
 --
 
 INSERT INTO `offeraddres` (`id`, `offer_id`, `miasto_id`, `ulica`, `numerulicy`) VALUES
-(38, 19, 1, 'qwe', '12'),
-(39, 19, 2, 'sad', '123');
+(1, 5, 294, 'Sikroskiego', '53'),
+(2, 5, 294, 'marka', '40'),
+(3, 5, 335, 'asd', '12312312312312'),
+(4, 6, 92, 'asd', '123');
 
 -- --------------------------------------------------------
 
@@ -1052,8 +1058,8 @@ INSERT INTO `offeraddres` (`id`, `offer_id`, `miasto_id`, `ulica`, `numerulicy`)
 
 CREATE TABLE `offerservices` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `offer_addres_id` int(11) NOT NULL,
-  `usluga_id` int(11) NOT NULL,
+  `offer_addres_id` bigint(20) UNSIGNED NOT NULL,
+  `usluga_id` bigint(20) UNSIGNED NOT NULL,
   `cena` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1062,10 +1068,9 @@ CREATE TABLE `offerservices` (
 --
 
 INSERT INTO `offerservices` (`id`, `offer_addres_id`, `usluga_id`, `cena`) VALUES
-(28, 35, 53, 123),
-(29, 38, 53, 0),
-(30, 38, 54, 0),
-(31, 39, 53, 0);
+(2, 1, 2, 120),
+(3, 4, 7, 120),
+(4, 4, 6, 50);
 
 -- --------------------------------------------------------
 
@@ -1074,8 +1079,8 @@ INSERT INTO `offerservices` (`id`, `offer_addres_id`, `usluga_id`, `cena`) VALUE
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1087,12 +1092,12 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1107,8 +1112,8 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `services` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `specializations_id` int(11) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `specializations_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1116,8 +1121,11 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `specializations_id`) VALUES
-(53, 'konsultacja', 1),
-(54, 'wyrwanie 8', 1);
+(2, 'konsultacja', 2),
+(3, 'wyrywanie 8', 2),
+(4, 'konsultacja', 3),
+(6, 'konsultacja', 4),
+(7, 'gipsowanie', 4);
 
 -- --------------------------------------------------------
 
@@ -1127,7 +1135,7 @@ INSERT INTO `services` (`id`, `name`, `specializations_id`) VALUES
 
 CREATE TABLE `specializations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1135,9 +1143,9 @@ CREATE TABLE `specializations` (
 --
 
 INSERT INTO `specializations` (`id`, `name`) VALUES
-(1, 'Dentysta'),
-(2, 'Okulista'),
-(31, 'Ortopeda');
+(2, 'Dentysta'),
+(3, 'Ortopeda'),
+(4, 'Chirurg');
 
 -- --------------------------------------------------------
 
@@ -1147,25 +1155,26 @@ INSERT INTO `specializations` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `activated` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `date`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'Michał', 'Pawlikowski', '2022-11-01', 'michal0725@gmail.com', NULL, '$2y$10$lEMbwbHNVvw7lswvvR7B1eTAWkA3cwWW3oYHbD6EadeU4uX72AFu2', NULL, '2022-12-12 13:09:24', '2022-12-12 13:09:24', 1),
-(2, 'testaaaaaa', 'test', '2022-12-03', 'test@test.pl', NULL, '$2y$10$Dxi1eLnLGWy2yWS3c15.FOhhfIbsRvIzhwY0B2upalbvVLVj4yoG6', NULL, '2022-12-12 17:05:34', '2022-12-12 17:05:34', 0);
+INSERT INTO `users` (`id`, `name`, `surname`, `date`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status`, `activated`) VALUES
+(2, 'Michał', 'Pawlikowski', '2023-01-13', 'michal0725@gmail.com', NULL, '$2y$10$Socq6TiFxtkAmNiPVeLqZ.N/J3dROX1nUC7fMNB69w1Hzl51OYNv6', NULL, '2023-01-12 09:16:44', '2023-01-12 09:16:44', 1, 1),
+(3, 'jan', 'testowy', '2023-01-02', 'test@test.pl', NULL, '$2y$10$R/dOmG3Mz48L1j4.YI9oA.zYSDUGgo5mpzhBatTWdANgVgv5h1RZC', NULL, '2023-01-12 09:42:30', '2023-01-12 09:42:30', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1174,9 +1183,9 @@ INSERT INTO `users` (`id`, `name`, `surname`, `date`, `email`, `email_verified_a
 --
 
 CREATE TABLE `woje` (
-  `id` int(11) NOT NULL,
-  `nazwa` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nazwa` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Zrzut danych tabeli `woje`
@@ -1215,7 +1224,8 @@ ALTER TABLE `failed_jobs`
 -- Indeksy dla tabeli `miasta`
 --
 ALTER TABLE `miasta`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `miasta_woj_id_foreign` (`woj_id`);
 
 --
 -- Indeksy dla tabeli `migrations`
@@ -1227,19 +1237,25 @@ ALTER TABLE `migrations`
 -- Indeksy dla tabeli `offer`
 --
 ALTER TABLE `offer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `offer_users_id_foreign` (`users_id`),
+  ADD KEY `offer_specializations_id_foreign` (`specializations_id`);
 
 --
 -- Indeksy dla tabeli `offeraddres`
 --
 ALTER TABLE `offeraddres`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `offeraddres_offer_id_foreign` (`offer_id`),
+  ADD KEY `offeraddres_miasto_id_foreign` (`miasto_id`);
 
 --
 -- Indeksy dla tabeli `offerservices`
 --
 ALTER TABLE `offerservices`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `offerservices_offer_addres_id_foreign` (`offer_addres_id`),
+  ADD KEY `offerservices_usluga_id_foreign` (`usluga_id`);
 
 --
 -- Indeksy dla tabeli `password_resets`
@@ -1259,7 +1275,8 @@ ALTER TABLE `personal_access_tokens`
 -- Indeksy dla tabeli `services`
 --
 ALTER TABLE `services`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `services_specializations_id_foreign` (`specializations_id`);
 
 --
 -- Indeksy dla tabeli `specializations`
@@ -1294,7 +1311,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT dla tabeli `miasta`
 --
 ALTER TABLE `miasta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1024;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=919;
 
 --
 -- AUTO_INCREMENT dla tabeli `migrations`
@@ -1306,19 +1323,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT dla tabeli `offer`
 --
 ALTER TABLE `offer`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `offeraddres`
 --
 ALTER TABLE `offeraddres`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `offerservices`
 --
 ALTER TABLE `offerservices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `personal_access_tokens`
@@ -1330,25 +1347,62 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT dla tabeli `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `specializations`
 --
 ALTER TABLE `specializations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `woje`
 --
 ALTER TABLE `woje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `miasta`
+--
+ALTER TABLE `miasta`
+  ADD CONSTRAINT `miasta_woj_id_foreign` FOREIGN KEY (`woj_id`) REFERENCES `woje` (`id`);
+
+--
+-- Ograniczenia dla tabeli `offer`
+--
+ALTER TABLE `offer`
+  ADD CONSTRAINT `offer_specializations_id_foreign` FOREIGN KEY (`specializations_id`) REFERENCES `specializations` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `offer_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `offeraddres`
+--
+ALTER TABLE `offeraddres`
+  ADD CONSTRAINT `offeraddres_miasto_id_foreign` FOREIGN KEY (`miasto_id`) REFERENCES `miasta` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `offeraddres_offer_id_foreign` FOREIGN KEY (`offer_id`) REFERENCES `offer` (`id`) ON DELETE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `offerservices`
+--
+ALTER TABLE `offerservices`
+  ADD CONSTRAINT `offerservices_offer_addres_id_foreign` FOREIGN KEY (`offer_addres_id`) REFERENCES `offeraddres` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `offerservices_usluga_id_foreign` FOREIGN KEY (`usluga_id`) REFERENCES `services` (`id`) ON DELETE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `services`
+--
+ALTER TABLE `services`
+  ADD CONSTRAINT `services_specializations_id_foreign` FOREIGN KEY (`specializations_id`) REFERENCES `specializations` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
