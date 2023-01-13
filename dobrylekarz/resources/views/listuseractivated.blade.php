@@ -42,13 +42,14 @@
     <div class="row justify-content-center">
         
 
-        <div class='col-md-8'>
+       
         
             <div class='card'>
                 <div class='card-header'>
 
                   <h5>Lista ofert</h5>
                   <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
+                  <div class="table-responsive">  
   <table class='table table-bordered table-striped'>
     <thead>
       <tr>
@@ -87,6 +88,7 @@
       @endphp
     </tbody>
   </table>
+</div>
 
                     
                 </div>
@@ -95,7 +97,7 @@
         
             </div>
             <br>
-        </div>
+        
         
 
     

@@ -19,13 +19,15 @@ class AddCitiesController extends Controller
         $miasto = $request->miasto;
         $ulica = $request->ulica;
         $numerulicy = $request->numerulicy;
+        $numertelefonu = $request->numertelefonu;
 
         DB::table('offeraddres')->insert(
             array(
                    'offer_id'     =>   $numberprofil,
                    'miasto_id' => $miasto,
                    'ulica' => $ulica,
-                   'numerulicy' => $numerulicy
+                   'numerulicy' => $numerulicy,
+                   'telefon' => $numertelefonu
                    
             )
        );

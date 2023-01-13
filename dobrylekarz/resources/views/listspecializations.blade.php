@@ -42,13 +42,14 @@
     <div class="row justify-content-center">
         
 
-        <div class='col-md-8'>
+
         
             <div class='card'>
                 <div class='card-header'>
 
                   <h5>Lista specjalizacji</h5>
                   <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
+                  <div class="table-responsive">  
   <table class='table table-bordered table-striped'>
     <thead>
       <tr>
@@ -75,6 +76,7 @@
         @endphp
     </tbody>
   </table>
+</div>
 Dodaj nową specjalizację:
 
 <form action="/adminpanel/listspecializations/addspecializations" method="post">
@@ -90,7 +92,7 @@ Dodaj nową specjalizację:
         
             </div>
             <br>
-        </div>
+       
         
 
     

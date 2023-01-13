@@ -5,13 +5,13 @@
     
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        
           
             
             <div class="card">
                 <div class="card-header">Dodawanie nowego profilu</div>
                 <div class="card-body">
-
+                    <div class="table-responsive">  
                 <form action="{{route('home') }}" method="post">
                     @csrf
                     Specjalizacja: 
@@ -39,7 +39,7 @@
 
                 </div>
            
-        </div>
+        
         
     </div>
 </div>

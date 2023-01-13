@@ -9,7 +9,7 @@
         foreach ($user as $user)
         {
 echo "
-        <div class='col-md-8'>
+        
           
             <div class='card'>
                 <div class='card-header'>
@@ -35,7 +35,7 @@ echo "
         
             </div>
             <br>
-        </div>
+       
         
 ";
     }
