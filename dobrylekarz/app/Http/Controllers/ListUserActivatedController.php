@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class ListUserController extends Controller
+class ListUserActivatedController extends Controller
 {
     public function __construct()
     {
@@ -19,20 +19,18 @@ class ListUserController extends Controller
         if(Auth::user()->status == 1)
         {
 
-            $listuser = DB::table('users')
+            $listusers = DB::table('users')
             ->select('users.*')
-            ->where('activated', 1)
-            ->where('status', 0)
+            ->where('activated',0)
             ->get();
 
 
-            return view('listuser', ['listuser' => $listuser]);
+            return view('listuseractivated', ['listusers' => $listusers]);
         }
         else
         {
-            //return view('welcome');
-
-            return redirect('/');
+           // return view('welcome');
+           return redirect('/');
         }
 
 

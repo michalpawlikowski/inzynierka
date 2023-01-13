@@ -21,7 +21,11 @@ class AddController extends Controller
         }
 else
 {
-        $specializations = DB::table('specializations')->get();
+        $specializations = DB::table('specializations')
+        ->select('specializations.*')
+        ->leftJoin('offer', 'offer.specializations_id', '=', 'specializations.id')
+        ->where('offer.specializations_id',null)
+        ->get();
         return view('add', ['specializations' => $specializations]);
 }
     }

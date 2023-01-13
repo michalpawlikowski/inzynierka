@@ -54,22 +54,32 @@
       <tr>
         <th>Imię</th>
         <th>Nazwisko</th>
-        <th>Specjalizacja</th>
-        <th>Wyśiwetl ofertę</th>
+        <th>Data urodzenia</th>
+        <th>Email</th>
+        <th>Numer telefonu</th>
+        <th>Weryfikacja</th>
       </tr>
     </thead>
     <tbody id='myTable'>
       @php
-      foreach ($listoffer as $listoffer)
+      foreach ($listusers as $listusers)
       {
           echo "
       
     <tr>
       
-      <td>$listoffer->name1</td>
-      <td>$listoffer->surname1</td>
-      <td>$listoffer->specializations</td>
-      <td><a href='/adminpanel/listoffer/$listoffer->id'><button type='button' class='btn btn-outline-success'>Wyświetl ofertę</button></a>
+      <td>$listusers->name</td>
+      <td>$listusers->surname</td>
+      <td>$listusers->date</td>
+      <td>$listusers->email</td>
+      <td>telefon</td>
+
+      
+      <td>
+        <a href='/adminpanel/listuseractivated/activate/$listusers->id'><button type='button' class='btn btn-outline-success'>Akceptuj</button></a>
+        <a href='/adminpanel/listuseractivated/delete/$listusers->id'><button type='button' class='btn btn-outline-danger'>Skasuj</button></a>
+        </td>
+      
     </tr>
     ";
       }
