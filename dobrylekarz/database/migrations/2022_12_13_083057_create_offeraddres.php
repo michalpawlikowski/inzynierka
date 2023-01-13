@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('miasto_id');
             $table->string('ulica');
             $table->string('numerulicy');
+            $table->integer('telefon');
 
 
 

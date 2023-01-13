@@ -15,7 +15,7 @@
                 <form action="{{route('home') }}" method="post">
                     @csrf
                     Specjalizacja: 
-                    <select class="js-example-basic-single" name="specializations">
+                    <select class="js-example-basic-single" name="specializations" required>
                         @php
                         foreach ($specializations as $specializations)
                                  {

@@ -72,6 +72,7 @@
    <br>
    Ulica: <input type="text" class="form-control" name="ulica" placeholder="Nazwa ulicy" required>
    Numer: <input type="text" class="form-control" name="numerulicy" placeholder="Numer ulicy" required>
+   
     <button type="submit" class="btn btn-primary">Dodaj</button>
   </form>
 

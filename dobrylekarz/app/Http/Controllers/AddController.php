@@ -21,11 +21,18 @@ class AddController extends Controller
         }
 else
 {
-        $specializations = DB::table('specializations')
-        ->select('specializations.*')
-        ->leftJoin('offer', 'offer.specializations_id', '=', 'specializations.id')
-        ->where('offer.specializations_id',null)
-        ->get();
+    $specializations=DB::table('specializations')
+    ->whereNotIn('specializations.id',function ($query) {
+                    $query->select('specializations_id')
+                    ->from('offer')
+                    ->where('offer.users_id','=',Auth::user()->id);
+    
+                })
+    ->get();
+
+
+
+
         return view('add', ['specializations' => $specializations]);
 }
     }
