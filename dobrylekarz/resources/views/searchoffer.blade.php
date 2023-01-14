@@ -154,13 +154,20 @@ Opis:  $userinfo->description
 
             </div>
         </main>
-        <h5>Oceny   (@php
+        <h5>Oceny   @php
 
             foreach ($srednia as $srednia)
             {
-                echo $srednia   ->ocena;
+                if($srednia->ocena == null)
+                {
+
+                }
+                else {
+                    echo "($srednia->ocena)";  
+                }
+                
             }
-            @endphp):</h5>
+            @endphp:</h5>
         <br> 
         <table id="myTable">
             <tr>

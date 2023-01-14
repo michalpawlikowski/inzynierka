@@ -49,7 +49,58 @@
                       <br>
                        </select>
                     <br>
-                    <center>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        {{'Szukaj' }}
+                    </button>
+
+                </form>
+           
+        </h2>
+        
+        <h1> Znajdź odpowiedniego specjalistę w swoim województwie</h1>
+           
+
+                <form action="/searchw" method="post">
+                    @csrf
+                    
+                   
+
+                    <h2>
+                   
+                    <select class="js-example-basic-single"  style="width: 25%; height:30px" name="specializations" >
+
+
+                        @php
+                        foreach ($specializations as $specializations1)
+                                 {
+                                 
+                                    
+                                    echo "<option value ='$specializations1->id'>$specializations1->name </option> ";
+                                 
+                                 }
+                                 
+                      @endphp
+                      
+                       </select>
+                    
+                    
+                   
+
+                    <select class="js-example-basic-single"  style="width: 30%" name="woje" >
+
+
+                        @php
+                        foreach ($woje as $woje1)
+                                 {
+                                    echo "<option value ='$woje1->id'>$woje1->nazwa </option> ";
+                                 }
+                                 
+                      @endphp
+                      <br>
+                       </select>
+                    <br>
+                    
                     <button type="submit" class="btn btn-primary">
                         {{'Szukaj' }}
                     </button>
@@ -58,9 +109,39 @@
            
         </h2>
 
+        <h1> Znajdź odpowiedniego specjalistę po specjalizacji</h1>
 
 
+        <form action="/searchs" method="post">
+            @csrf
+            
+           
 
+            <h2>
+           
+            <select class="js-example-basic-single"  style="width: 25%; height:30px" name="specializations" >
+
+
+                @php
+                foreach ($specializations as $specializations1)
+                         {
+                         
+                            
+                            echo "<option value ='$specializations1->id'>$specializations1->name </option> ";
+                         
+                         }
+                         
+              @endphp
+              
+               </select>
+            
+            <br>
+            
+            <button type="submit" class="btn btn-primary">
+                {{'Szukaj' }}
+            </button>
+
+        </form>
 
 
             

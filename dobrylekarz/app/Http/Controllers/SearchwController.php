@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class SearchController extends Controller
+class SearchwController extends Controller
 
 {
 
     public function index(Request $request)
     {
         $specializations = $request->specializations;
-        $city = $request->city;
+        $woje = $request->woje;
 
 
         $userId = Auth::id();
@@ -28,7 +28,7 @@ class SearchController extends Controller
             ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*', 'offer.id as id1', 'users.id as iksde','woje.nazwa as woje')
             ->where('offer.status',0)
             ->where('specializations_id',$specializations)
-            ->where('miasto_id',$city)
+            ->where('woje.id',$woje)
             ->distinct('offer.offer_id')
             ->groupBy('offeraddres.offer_id')
             ->get();

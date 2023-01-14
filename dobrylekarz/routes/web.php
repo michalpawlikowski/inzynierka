@@ -150,6 +150,14 @@ Route::post('/search', [App\Http\Controllers\SearchController::class, 'index'])-
 
 Auth::routes();
 
+Route::post('/searchs', [App\Http\Controllers\SearchsController::class, 'index'])->name('searchs');
+
+Auth::routes();
+
+Route::post('/searchw', [App\Http\Controllers\SearchwController::class, 'index'])->name('searchw');
+
+Auth::routes();
+
 Route::get('/search/{number}', [App\Http\Controllers\SearchOfferController::class, 'index'])->name('searchoffer');
 
 Auth::routes();

@@ -14,6 +14,11 @@ class WelcomeController extends Controller
             ->orderBy('miasta.nazwa', 'asc')
             ->get();
 
+            $woje = DB::table('woje')
+            ->select('woje.*')
+            ->orderBy('woje.nazwa', 'asc')
+            ->get();
+
         $specializations = DB::table('specializations')
             ->select('specializations.*')
             ->get();
@@ -23,7 +28,7 @@ class WelcomeController extends Controller
 
         
 
-        return view('welcome', ['miasta' => $miasta,'specializations' => $specializations]);
+        return view('welcome', ['miasta' => $miasta,'specializations' => $specializations, 'woje' => $woje]);
 
     }
 }
