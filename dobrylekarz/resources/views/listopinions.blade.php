@@ -35,46 +35,42 @@
   background-color: #f1f1f1;
 }
     </style>
+    
 <div class="container">
     @include('adminlist')
+    <br><br>
     <div class="row justify-content-center">
         
 
-       
-          
+      
+        
             <div class='card'>
                 <div class='card-header'>
-                     
-                 
-            <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
-  <br>
-  <div class="table-responsive">  
+
+                  <h5>Lista opinii</h5>
+                  <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
+                  <div class="table-responsive">  
   <table class='table table-bordered table-striped'>
     <thead>
       <tr>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Data urodzenia</th>
-        <th>Email</th>
-        <th>Opinie</th>
-        <th>Edycja</th>
+        <th>Nazwa Użytkownika</th>
+        <th>Opis</th>
+        <th>Ocena</th>
         <th>Skasuj</th>
       </tr>
     </thead>
     <tbody id='myTable'>
         @php
-        foreach ($listuser as $listuser)
+        foreach ($opinions as $opinions)
         {
             echo "
         
       <tr>
-        <td>$listuser->name</td>
-        <td>$listuser->surname</td>
-        <td>$listuser->date</td>
-        <td>$listuser->email</td>
-        <td><a href='/adminpanel/listuser/opinions/$listuser->id'><button type='button' class='btn btn-outline-success'>Opinie</button></a>
-        <td><a href='/adminpanel/listuser/edit/$listuser->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
-        <td><a href='/adminpanel/listuser/delete/$listuser->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
+        
+        <td>$opinions->user</td>
+        <td>$opinions->opis</td>
+        <td>$opinions->ocena</td>
+        <td><a href='/adminpanel/listuser/deleteopinions/$numberuser/$opinions->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
       </tr>
       ";
         }
@@ -84,7 +80,6 @@
   </table>
 </div>
 
-                        
                     
                 </div>
                 
@@ -92,7 +87,7 @@
         
             </div>
             <br>
-        
+       
         
 
     

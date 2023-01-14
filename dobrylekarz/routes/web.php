@@ -106,6 +106,14 @@ Route::get('/adminpanel/listuser/edit/{numberuser}', [App\Http\Controllers\EditU
 
 Auth::routes();
 
+Route::get('/adminpanel/listuser/opinions/{numberuser}', [App\Http\Controllers\ShowOpinionsController::class, 'index'])->name('showopinions');
+
+Auth::routes();
+
+Route::get('/adminpanel/listuser/deleteopinions/{numberuser}/{numberopinion}', [App\Http\Controllers\DeleteOpinionsController::class, 'index'])->name('deleteopinions');
+
+Auth::routes();
+
 Route::get('/adminpanel/listuser/delete/{numberuser}', [App\Http\Controllers\DeleteUserController::class, 'index'])->name('edituser');
 
 Auth::routes();
