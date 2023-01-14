@@ -37,52 +37,71 @@
     </style>
     
 <div class="container">
-    @include('adminlist')
     <br><br>
     <div class="row justify-content-center">
         
 
-
+        
         
             <div class='card'>
                 <div class='card-header'>
 
-                  <h5>Lista specjalizacji</h5>
-                  <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
-                  <div class="table-responsive">  
+                  <h5>Lista dni</h5>
+                 
+                  <div class="table-responsive">       
   <table class='table table-bordered table-striped'>
     <thead>
       <tr>
-        <th>Nazwa</th>
-        <th>Usługi</th>
+        <th>Dzień</th>
+        <th>Od</th>
+        <th>Do</th>
         <th>Skasuj</th>
       </tr>
     </thead>
     <tbody id='myTable'>
-        @php
-        foreach ($listspecializations as $listspecializations)
-        {
-            echo "
-        
-      <tr>
-        
-        <td>$listspecializations->name</td>
-        <td><a href='/adminpanel/listspecializations/listservices/$listspecializations->id'><button type='button' class='btn btn-outline-success'>Wyświetl usługi</button></a>
-        <td><a href='/adminpanel/listspecializations/deletespecializations/$listspecializations->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
-      </tr>
-      ";
-        }
+      @php
+      foreach ($days as $days1)
+      {
+          echo "
+      
+    <tr>
+      
+      <td>$days1->dzien</td>
+      <td>$days1->od</td>
+      <td>$days1->do</td>
+      <td><a href='/editprofil/addlocation/deletedays/$days1->id/$offer'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>
+    </tr>
+    ";
+      }
 
-        @endphp
+      @endphp
     </tbody>
   </table>
 </div>
-Dodaj nową specjalizację:
+<hr>
+Dodaj nowy dzień:
 
-<form action="/adminpanel/listspecializations/addspecializations" method="post">
+<form action="/editprofil/addlocation/adddays/save/{{$offer}}" method="post">
  @csrf
-  <input type="text" class="form-control" name="namespecializations" placeholder="Nazwa specjalizacji" required>
-  
+ <select class="js-example-basic-single" name="dzien" style="width: 15%">
+
+  <option value="Poniedziałek">Poniedziałek</option>
+  <option value="Wtorek">Wtorek</option>
+  <option value="Środa">Środa</option>
+  <option value="Czwartek">Czwartek</option>
+  <option value="Piątek">Piątek</option>
+  <option value="Sobota">Sobota</option>
+  <option value="Niedziela">Niedziela</option>
+
+
+<br>
+ </select>
+ <div class="col">
+ Godzina od:  <input type="time" name="od" class="form-control" style="width: 15%" value="06:00">
+ Godzina do:  <input type="time" name="do" class="form-control" style="width: 15%" value="18:00">
+</div>
+
+
   <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
                     
@@ -92,13 +111,19 @@ Dodaj nową specjalizację:
         
             </div>
             <br>
-       
         
 
     
     </div>
 </div>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 <script>
     $(document).ready(function(){
       $("#myInput").on("keyup", function() {
@@ -108,11 +133,6 @@ Dodaj nową specjalizację:
         });
       });
     });
-
-
-
-
-    
     </script>
 @endsection
 

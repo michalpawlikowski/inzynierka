@@ -28,9 +28,16 @@ class SearchOfferController extends Controller
             ->orderBy('miasta.nazwa', 'asc')
             ->get();
 
+            $idus = DB::table('offer')
+            ->select('users_id')
+            ->where('offer.id',$number)
+            ->limit(1)
+            ->get();
 
-          
-
+            foreach ($idus as $idus)
+            {
+                $iduser=$idus->users_id;
+            }
 
             $userinfo = DB::table('offer')
             ->join('specializations', 'specializations_id', '=', 'specializations.id')
@@ -48,7 +55,17 @@ class SearchOfferController extends Controller
             ->where('offer.id',$number)
             ->get();
 
-            return view('searchoffer', ['listoffer' => $listoffer, 'userinfo' => $userinfo, 'servicesoffer' => $servicesoffer]);
+            $oceny = DB::table('opinions')
+            ->select('opinions.*')
+            ->where('users_id',$iduser)
+            ->get();
+
+            $srednia = DB::table('opinions')
+            ->select('users_id',DB::raw('round(AVG(ocena),1) as ocena'))
+            ->where('users_id',$iduser)
+            ->get();
+
+            return view('searchoffer', ['listoffer' => $listoffer, 'userinfo' => $userinfo, 'servicesoffer' => $servicesoffer, 'iduser' => $iduser, 'number' => $number, 'oceny' => $oceny, 'srednia' => $srednia]);
         
 
 

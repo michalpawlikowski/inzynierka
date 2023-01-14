@@ -83,7 +83,7 @@ else
             ->where('id', $numberprofil)
             ->update(['description' => $description]);
 
-                return redirect()->route('editprofil', ['numberprofil' => $numberprofil]);
+                return redirect()->route('home');
                 
                 
             }

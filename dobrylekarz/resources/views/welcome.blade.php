@@ -5,19 +5,19 @@
     <div class="row justify-content-center" >
        
         <main class="py-4">
-            <div class="container">
+           
 
                 <h1> Znajdź odpowiedniego specjalistę w swojej okolicy</h1>
-
+            <br>
 
                 <form action="/search" method="post">
                     @csrf
                     
                    
 
-                    Specjalizacja:
-                    <br>
-                    <select class="js-example-basic-single"  style="width: 15%" name="specializations" >
+                    <h2>
+                   
+                    <select class="js-example-basic-single"  style="width: 25%; height:30px" name="specializations" >
 
 
                         @php
@@ -30,12 +30,13 @@
                                  }
                                  
                       @endphp
-                      <br>
+                      
                        </select>
-                    <br>
-                    Miasto:
-<br>
-                    <select class="js-example-basic-single"  style="width: 15%" name="city" >
+                    
+                    
+                   
+
+                    <select class="js-example-basic-single"  style="width: 30%" name="city" >
 
 
                         @php
@@ -48,12 +49,14 @@
                       <br>
                        </select>
                     <br>
+                    <center>
                     <button type="submit" class="btn btn-primary">
                         {{'Szukaj' }}
                     </button>
-                </form>
-            </div>
 
+                </form>
+           
+        </h2>
 
 
 

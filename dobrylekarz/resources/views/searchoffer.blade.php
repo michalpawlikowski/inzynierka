@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    table {
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    
+    th {
+      cursor: pointer;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 16px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f2f2f2
+    }
+    </style>
 <div class="container">
     <div class="row justify-content-center">
        
@@ -13,8 +33,8 @@ foreach ($userinfo as $userinfo)
 
 {
 
-echo "<h3>$userinfo->name1 $userinfo->surname1</h3>
-<br>
+echo "<h3>$userinfo->name1 $userinfo->surname1</h3> 
+
 Opis:  $userinfo->description
 ";
 
@@ -31,13 +51,15 @@ Opis:  $userinfo->description
                     <div class='card'>
                         <div class='card-header'>
                              
-                            <br>
-                             $listoffer->nazwa
+                            
+                            <b> Miejscowość:</b> $listoffer->nazwa
                             
                              
                              <br>
-                                adres: $listoffer->ulica $listoffer->numerulicy
-                            <br><br>
+                             &nbsp &nbsp<b> Adres: </b> $listoffer->ulica $listoffer->numerulicy
+                                <br>
+                                &nbsp  &nbsp&nbsp<b>Telefon: </b> $listoffer->telefon 
+                            <br>
                                         
                                     ";
                                    
@@ -50,15 +72,25 @@ Opis:  $userinfo->description
                                         {
                                             if($jeden == 0)
                                             {
-                                                echo "Dostępne usługi: <br>";
+                                                echo "<b>Dostępne usługi:</b> <br>";
                                                 $jeden++;
                                             }
-                                            echo "  -$servicesoffer1->usluga  - $servicesoffer1->cena zł <br>";
+                                            echo " &nbsp &nbsp  -$servicesoffer1->usluga";
+                                            if($servicesoffer1->cena == 0)
+                                            {
+                                                echo "<br>";
+                                            }
+                                            else
+                                            {
+                                                echo "- $servicesoffer1->cena zł <br>";
+                                            }
+                                            
+                                            
                                         }
                                     }
 
 
-                          echo "          
+                          echo "        
                         </div>
                         
         
@@ -75,12 +107,12 @@ Opis:  $userinfo->description
 
 
                 Dodaj swoją opinię: 
-                <form action="" method="get">
+                <form action="/search/addopinion/{{$number}}/{{$iduser}}" method="post">
                     @csrf
-                    Imię i nazwisko: <input type="text" class="form-control" name="ulica" placeholder="Imię i nazwisko" required>
-                    Opis:: <input type="text" class="form-control" name="numerulicy" placeholder="Opis" required>
-                    Ocena: 
-                    <select  name="ocena">
+                    Imię i nazwisko: <input type="text" class="form-control" name="name" placeholder="Imię i nazwisko" required>
+                    Opis:<input type="text" class="form-control" name="describe" placeholder="Opis"  maxlength="255" required>
+                    Ocena: <br>
+                    <select  name="ocena" class='table table-bordered table-striped' style="width: 5%">
 
                         <option value ='1'>1 </option> 
                         <option value ='2'>2 </option> 
@@ -96,6 +128,33 @@ Opis:  $userinfo->description
 
             </div>
         </main>
+        <h5>Oceny   (@php
+
+            foreach ($srednia as $srednia)
+            {
+                echo $srednia   ->ocena;
+            }
+            @endphp):</h5>
+        <br> 
+        <table id="myTable">
+            <tr>
+            <th>Pacjent</th>
+            <th>Opis</th>
+            <th>Ocena</th>
+            </tr>
+        @php
+
+foreach ($oceny as $oceny)
+{
+            echo "<tr>
+                <th>  $oceny->user </th>
+                <th>  $oceny->opis </th>
+                <th>  $oceny->ocena </th>
+</tr>
+            ";
+}
+@endphp
+        </table>
     </div>
 
 </div>

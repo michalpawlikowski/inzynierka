@@ -73,7 +73,7 @@
       <td>$listusers->surname</td>
       <td>$listusers->date</td>
       <td>$listusers->email</td>
-      <td>telefon</td>
+      <td>$listusers->telephone</td>
 
       
       <td>

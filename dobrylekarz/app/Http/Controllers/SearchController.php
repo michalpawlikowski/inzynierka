@@ -29,11 +29,17 @@ class SearchController extends Controller
             ->where('specializations_id',$specializations)
             ->where('miasto_id',$city)
             ->distinct('offer.offer_id')
-            ->groupBy('offeraddres.miasto_id')
+            ->groupBy('offeraddres.offer_id')
             ->get();
 
+            $ocena = DB::table('opinions')
+            ->select('users_id',DB::raw('round(AVG(ocena),1) as ocena'))
+            ->groupBy('users_id')
+            ->get();
+            
 
-            return view('search', ['listoffer' => $listoffer]);
+
+            return view('search', ['listoffer' => $listoffer, 'ocena' => $ocena]);
         
 
 

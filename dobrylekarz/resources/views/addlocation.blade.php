@@ -46,7 +46,7 @@
         <td>$location->telefon</td>
         
         <td><a href='/editprofil/addlocation/addservices/$location->id'><button type='button' class='btn btn-outline-success'>Wyświetl usługi</button></a>
-        <td><a href='/editprofil/addlocation/addservices/$location->id'><button type='button' class='btn btn-outline-success'>Wyświetl dni pracy</button></a>
+        <td><a href='/editprofil/addlocation/adddays/$location->id'><button type='button' class='btn btn-outline-success'>Wyświetl dni pracy</button></a>
         <td><a href='/editprofil/addlocation/deletecities/$location->id/$numberprofil'> <button type='button' class='btn btn-outline-danger'>Kasuj lokalizacje</button></a></td>
       </tr>
       ";

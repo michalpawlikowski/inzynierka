@@ -14,8 +14,9 @@
                     <div class="table-responsive">  
                 <form action="{{route('home') }}" method="post">
                     @csrf
+                    <h3> Wybierz specjalizacje</h3>
                     Specjalizacja: 
-                    <select class="js-example-basic-single" name="specializations" required>
+                    <select class="js-example-basic-single" name="specializations" style="width: 15%" required>
                         @php
                         foreach ($specializations as $specializations)
                                  {
@@ -28,8 +29,8 @@
                       <br>
 
       
-                    <br>
-                    <br>
+                   
+                   
                     <button type="submit" class="btn btn-primary">
                      Dodaj
                     </button>

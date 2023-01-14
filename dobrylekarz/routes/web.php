@@ -151,3 +151,21 @@ Route::get('/adminpanel/listuseractivated/activate/{numberuser}', [App\Http\Cont
 Auth::routes();
 
 Route::get('/adminpanel/listuseractivated/delete/{numberuser}', [App\Http\Controllers\ListUserActivatedDeleteController::class, 'index'])->name('deleteuser');
+
+Auth::routes();
+
+Route::get('/editprofil/addlocation/adddays/{numberaddres}', [App\Http\Controllers\AddDaysController::class, 'index'])->name('adddays');
+
+Auth::routes();
+
+Route::post('/editprofil/addlocation/adddays/save/{numberaddres}', [App\Http\Controllers\AddDaysSaveController::class, 'index'])->name('adddayssave');
+
+Auth::routes();
+
+Route::get('/editprofil/addlocation/deletedays/{del}/{numberaddres}', [App\Http\Controllers\DeleteDaysUserController::class, 'index'])->name('deletedaysuser');
+
+
+Auth::routes();
+
+Route::post('/search/addopinion/{number}/{iduser}', [App\Http\Controllers\AddOpinionsController::class, 'index'])->name('addopinions');
+
