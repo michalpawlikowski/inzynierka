@@ -172,8 +172,11 @@ Auth::routes();
 
 Route::get('/editprofil/addlocation/deletedays/{del}/{numberaddres}', [App\Http\Controllers\DeleteDaysUserController::class, 'index'])->name('deletedaysuser');
 
-
 Auth::routes();
 
 Route::post('/search/addopinion/{number}/{iduser}', [App\Http\Controllers\AddOpinionsController::class, 'index'])->name('addopinions');
+
+Auth::routes();
+
+Route::get('/deleteaccount/{iduser}', [App\Http\Controllers\DeleteAccountController::class, 'index'])->name('deleteaccount');
 

@@ -13,9 +13,10 @@ echo "
           
             <div class='card'>
                 <div class='card-header'>
+                    
                     Dane konta
-                </div>
-                
+                <br>
+                <a href='/deleteaccount/".Auth::id()."'> <button type='button' class='btn btn-outline-danger'>Kasuj konto</button></a>
                 <form action='/settings/save/{{$user->id}}' method='get'>
 
                         <br> Imię: <input type='text' class='form-control' name='name' value='$user->name'>
@@ -40,6 +41,10 @@ echo "
 ";
     }
     @endphp    
+
+
+
+    
     </div>
 </div>
 @endsection

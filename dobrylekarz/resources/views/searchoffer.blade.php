@@ -88,6 +88,32 @@ Opis:  $userinfo->description
                                             
                                         }
                                     }
+                                   
+                                    $jedenn=0;
+                                    foreach ($days as $days1)
+                                    {
+                                        
+
+
+                                        
+                                        
+                                        if($days1->adres == $listoffer->id)
+                                        {
+                                           
+                                            if($jedenn == 0)
+                                            {
+                                                echo "<b>Dni pracy:</b> <br>";
+                                                $jedenn++;
+                                            }
+                                              
+                                            
+                                            echo " &nbsp &nbsp  -$days1->dzien: $days1->od - $days1->do <br>
+                                            ";
+                                          
+                                            
+                                            
+                                        }
+                                    }
 
 
                           echo "        
@@ -104,7 +130,7 @@ Opis:  $userinfo->description
             
             
             @endphp    
-
+       
 
                 Dodaj swoją opinię: 
                 <form action="/search/addopinion/{{$number}}/{{$iduser}}" method="post">

@@ -55,6 +55,13 @@ class SearchOfferController extends Controller
             ->where('offer.id',$number)
             ->get();
 
+            $days = DB::table('offer')
+            ->join('offeraddres', 'offer.id', '=', 'offer_id')
+            ->join('days', 'days.offer_addres_id', '=', 'offeraddres.id')
+            ->select( 'offeraddres.id as adres', 'days.*')
+            ->where('offer.id',$number)
+            ->get();
+
             $oceny = DB::table('opinions')
             ->select('opinions.*')
             ->where('users_id',$iduser)
@@ -65,7 +72,7 @@ class SearchOfferController extends Controller
             ->where('users_id',$iduser)
             ->get();
 
-            return view('searchoffer', ['listoffer' => $listoffer, 'userinfo' => $userinfo, 'servicesoffer' => $servicesoffer, 'iduser' => $iduser, 'number' => $number, 'oceny' => $oceny, 'srednia' => $srednia]);
+            return view('searchoffer', ['listoffer' => $listoffer, 'userinfo' => $userinfo, 'servicesoffer' => $servicesoffer, 'iduser' => $iduser, 'number' => $number, 'oceny' => $oceny, 'srednia' => $srednia, 'days' => $days]);
         
 
 
