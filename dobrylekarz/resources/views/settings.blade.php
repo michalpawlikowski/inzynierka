@@ -15,8 +15,8 @@ echo "
                 <div class='card-header'>
                     
                     Dane konta
-                <br>
-                <a href='/deleteaccount/".Auth::id()."'> <button type='button' class='btn btn-outline-danger'>Kasuj konto</button></a>
+                
+                
                 <form action='/settings/save/{{$user->id}}' method='get'>
 
                         <br> Imię: <input type='text' class='form-control' name='name' value='$user->name'>
@@ -33,9 +33,9 @@ echo "
 
 
 
-        
+                    <p style='text-align: right'>   <a href='/deleteaccount/".Auth::id()."'> <button type='button' class='btn btn-outline-danger'>Kasuj konto</button></a>   </p>
             </div>
-            <br>
+            
        
         
 ";

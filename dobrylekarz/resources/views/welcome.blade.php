@@ -8,7 +8,6 @@
            
 
                 <h1> Znajdź odpowiedniego specjalistę w swojej okolicy</h1>
-            <br>
 
                 <form action="/search" method="post">
                     @csrf

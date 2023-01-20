@@ -45,6 +45,7 @@
           <tr>
             <th>Imię</th>
             <th>Nazwisko</th>
+            <th>Miasto</th>
             <th>Województwo</th>
             <th>Ulica</th>
             <th>Numer ulicy</th>
@@ -64,6 +65,7 @@
           
           <td>$listoffer->name1</td>
           <td>$listoffer->surname1</td>
+          <td>$listoffer->miasto</td>
           <td>$listoffer->woje</td>
           <td>$listoffer->ulica</td>
           <td>$listoffer->numerulicy</td>
