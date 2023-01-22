@@ -22,6 +22,7 @@ echo "
                         <br> Imię: <input type='text' class='form-control' name='name' value='$user->name'>
                          Nazwisko: <input type='text' class='form-control' name='surname' value='$user->surname'>
                          Data urodzenia: <input type='date' class='form-control' name='date' value='$user->date'>
+                         Nazwisko: <input type='text' class='form-control' name='telephone' value='$user->telephone'>
                          <br>
                         <button type='submit' class='btn btn-primary'>
                          Zapisz

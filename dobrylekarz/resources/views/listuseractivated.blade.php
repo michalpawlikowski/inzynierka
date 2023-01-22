@@ -47,7 +47,7 @@
             <div class='card'>
                 <div class='card-header'>
 
-                  <h5>Lista ofert</h5>
+                  <h5>Lista użytkowników do weryfikacji</h5>
                   <input class='form-control' id='myInput' type='text' placeholder='Szukaj..'>
                   <div class="table-responsive">  
   <table class='table table-bordered table-striped'>

@@ -56,6 +56,7 @@
         <th>Nazwisko</th>
         <th>Data urodzenia</th>
         <th>Email</th>
+        <th>Telefon</th>
         <th>Opinie</th>
         <th>Edycja</th>
         <th>Skasuj</th>
@@ -72,6 +73,7 @@
         <td>$listuser->surname</td>
         <td>$listuser->date</td>
         <td>$listuser->email</td>
+        <td>$listuser->telephone</td>
         <td><a href='/adminpanel/listuser/opinions/$listuser->id'><button type='button' class='btn btn-outline-success'>Opinie</button></a>
         <td><a href='/adminpanel/listuser/edit/$listuser->id'><button type='button' class='btn btn-outline-success'>Edytuj</button></a>
         <td><a href='/adminpanel/listuser/delete/$listuser->id'> <button type='button' class='btn btn-outline-danger'>Kasuj</button></a></td>

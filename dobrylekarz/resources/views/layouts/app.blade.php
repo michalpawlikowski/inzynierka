@@ -89,7 +89,7 @@
                                     </a>
                                     @endif
 
-                                    @if (Auth::user()->activated == 1)
+                                    @if (Auth::user()->activated == 1 &&Auth::user()->status == 0)
                                     <a href={{ route('home') }} class="dropdown-item" >
                                         {{ __('Moje profile') }}
                                     </a>

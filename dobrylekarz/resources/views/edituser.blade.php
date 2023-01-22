@@ -10,12 +10,7 @@
           
             <div class='card'>
                 <div class='card-header'>
-                    Edycja użytwkownika
-
-
-
-                </div>
-                
+                   <h5> Edycja użytwkownika</h5>
                 @php
                 foreach ($user as $user)
                 {
@@ -28,7 +23,7 @@
                                  Nazwisko: <input type='text' class='form-control' name='surname' value='$user->surname'>
                                  Data urodzenia: <input type='date' class='form-control' name='date' value='$user->date'>
                                  Email: <input type='text' class='form-control' name='email' value='$user->email'>
-                                 <br>
+                                 Telefon: <input type='text' class='form-control' name='telephone' value='$user->telephone'>
                                 <button type='submit' class='btn btn-primary'>
                                  Zapisz
                                 </button>
@@ -47,9 +42,9 @@
             @endphp    
         
             </div>
-            <br>
+         
         
-        
+        </div>
 
     
     </div>
