@@ -59,6 +59,9 @@
       </tr>
     </thead>
     <tbody id='myTable'>
+
+  
+
         @php
         foreach ($listspecializations as $listspecializations)
         {

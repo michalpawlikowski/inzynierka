@@ -135,7 +135,7 @@ Opis:  $userinfo->description
                 Dodaj swoją opinię: 
                 <form action="/search/addopinion/{{$number}}/{{$iduser}}" method="post">
                     @csrf
-                    Imię i nazwisko: <input type="text" class="form-control" name="name" placeholder="Imię i nazwisko" required>
+                    Imię i nazwisko: <input type="text" class="form-control" name="name" placeholder="Imię i nazwisko" maxlength="35" required>
                     Opis:<input type="text" class="form-control" name="describe" placeholder="Opis"  maxlength="255" required>
                     Ocena: <br>
                     <select  name="ocena" class='table table-bordered table-striped' style="width: 5%">
