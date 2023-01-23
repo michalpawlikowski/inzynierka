@@ -13,10 +13,7 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $specializations = $request->specializations;
-        $city = $request->city;
-
-
-        $userId = Auth::id();
+        $city = $request->cities;
 
         
             $listoffer = DB::table('offer')
@@ -25,7 +22,7 @@ class SearchController extends Controller
             ->join('offeraddres', 'offer.id', '=', 'offer_id')
             ->join('miasta', 'offeraddres.miasto_id', '=', 'miasta.id')
             ->join('woje', 'woje.id', '=', 'miasta.woj_id')
-            ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*', 'offer.id as id1', 'users.id as iksde','woje.nazwa as woje','miasta.nazwa as miasto')
+            ->select('offer.*', 'specializations.name as specializations', 'users.name as name1', 'users.surname as surname1', 'miasta.*', 'offeraddres.*', 'offer.id as id1','woje.nazwa as woje','miasta.nazwa as miasto')
             ->where('offer.status',0)
             ->where('specializations_id',$specializations)
             ->where('miasto_id',$city)
