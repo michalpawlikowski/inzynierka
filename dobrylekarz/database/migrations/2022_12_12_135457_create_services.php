@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name',50);
             $table->unsignedBigInteger('specializations_id');
-
             $table->foreign('specializations_id')->references('id')->on('specializations')->onDelete('cascade');
         });
     }
